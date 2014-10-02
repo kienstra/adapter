@@ -1,0 +1,275 @@
+/*
+Theme Name: Adapter
+Theme URI: http://ryankienstra.com/adapter
+Author: ryankienstra
+Author URI: http://ryankienstra.com
+Description: Adapts to any screen size. Made for developers, with 16 filters and 3 hooks. Load your own Bootstrap css and javascript if you want. Using the admin menu, add an opt-in form to the top and bottom navbars. Select a header image and background color. Page templates include full-width, a page with a sidebar, and a landing page without a header or footer.
+
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: right-sidebar , responsive-layout , two-columns , full-width-template , translation-ready , theme-options , featured-image-header
+Text Domain : adapter-wp
+
+*/
+
+html {
+  position : relative ;  
+  min-height : 100% ;
+}
+
+body {
+  padding-top : 0  ;
+  padding-bottom : 4rem ; 
+}
+
+html body #wpadminbar {
+ z-index: 5000 !important  ;
+}
+
+/* if wp admin bar, lower navbar */
+.admin-bar .navbar-fixed-top {
+  margin-top : 30px ;
+}
+
+.top-navbar {
+  margin-bottom : 0 ;
+}
+
+.top-navbar .dropdown:hover .dropdown-menu {
+  display : block ;
+}
+
+.container .navbar-collapse {
+  overflow: hidden;
+}
+
+.top-navber.navbar-static-top {
+  z-index : 2000 ;
+}
+
+.navbar-opt-in.navbar-static-top {
+  z-index : 100 ;
+}
+
+.navbar-opt-in .navbar-form {
+  border : 0 ;
+}
+
+/* Post styles */
+.post h1 ,
+.post p {
+  -ms-word-wrap : break-word ;
+  word-wrap : break-word ;
+}
+
+article.post-preview {
+  position : relative ;
+}
+
+article.post-preview .home-featured-image ,
+img.search-thumbnail {
+  max-height : 140px ;
+  max-width  : 300px ;  
+  height : auto ;
+  width : auto ;
+  margin-left : 10px ;
+}
+
+article.post-preview .mobile-post-permalink {  
+  display : none ;
+}
+
+article.post-preview .read-more-button {
+  margin-top : 5px ;
+}
+
+.post-edit-link {
+  font-size : .5em ;
+}
+
+.post ,
+.size-auto , 
+.size-full ,
+.size-large ,
+.size-medium ,
+.size-thumbnail {
+  max-width : 100% ;
+  height : auto ;
+}
+
+.post .aligncenter ,
+.post .alignleft ,
+.post .alignright {
+  display : block ;
+}
+
+.post .aligncenter {
+  margin-left : auto ;
+  margin-right : auto ;  
+}
+
+.post .alignleft {
+  float : left ;
+  padding-right : 2rem ; 
+}
+
+.post .alignright {
+  float : right ;
+  padding-left : 2rem ; 
+}
+
+.comment-area {
+  padding-top : 15px ;
+}
+
+.comment-area * {
+  list-style : none ;
+  list-style-image : none ;
+  list-style-type : none ;    
+}
+
+.comment article {
+  padding : 10px 10px 15px 10px ;  
+}
+
+.children .comment ,
+.comment:not(:first-child) {
+  border-top : 1px ;
+  border-top-color : #DCD3D3 ;
+  border-top-style : solid ;
+  margin-top : 0 ;
+}
+
+.meta-comment {
+  padding-right : 10px ;
+}
+
+.comment-form-comment label[for=comment] {
+  display : block ;
+}
+
+.post .comment-link {
+  text-decoration : none ;
+}
+
+.wp-caption-text ,
+.wp-caption k ,
+.gallery-caption {
+  text-align : center ;
+}
+
+.wp-caption ,
+.post img {
+  max-width : 100% ;
+  height : auto ;
+  padding-top : 2rem ;
+  padding-bottom : 2rem ;  
+}
+
+.wp-caption img ,
+.gallery-icon {
+  padding-bottom : 1rem ;
+}
+
+
+.sticky {
+  background-color : #f8f8f8 ;
+}
+
+.sticky .entry-date {
+  display: none;
+}
+
+.bypostauthor>article {
+  background-color : #F0F0F0 ; 
+}
+
+.widget {
+  margin-bottom : 30px;
+}
+
+.widget .tagcloud a:hover {
+  text-decoration : none ;
+}
+
+.widget-search ,
+#search-form {
+  max-width : 500px ;
+}
+
+.widget .responsive-video-container {
+  margin-left : auto ;
+  margin-right : auto ;  
+}
+
+ul.pagination li.active a:hover { 
+  cursor : pointer ;
+  border : 3px ;
+  border-color : white ;
+  transition : .2s ;
+}
+
+ul.pager {
+  text-align: left ; 
+}
+
+#footer {
+  margin-top : 15px ;
+  position : absolute ;
+  bottom : 0 ;
+  width : 100% ;
+}
+
+#footer .navbar {
+  margin-bottom: 0px;
+}
+
+p.copyright-text {
+  text-align : center ;
+  margin : 1.5rem ;   
+}
+
+@media ( max-width: 600px ) {
+  #wpadminbar {
+    top : -46px ;
+  }
+}
+
+@media ( max-width : 600px ) {
+  .home-featured-image {
+     display : none ;
+  }
+
+  .post .read-more-button {
+    display : none ;
+  }
+  
+  article.post-preview .mobile-post-permalink {
+    display : block ;
+    font-size : 70px ;
+    position : absolute ;
+    top : 50% ; 
+    right : 0 ;
+    transform : translateY(-50%) ;
+    opacity : 0.2 ; 
+  }
+
+  .post-preview .mobile-post-permalink:hover {
+    opacity : 1 ;
+  }
+ 
+  .meta-comment {
+    display : none ;
+  }
+  
+  .meta-comment .avatar {
+    max-width : 60px ; 
+  }
+}
+
+@media ( max-width : 350px ) {
+  .add-comment {
+    display : none ;
+  }
+}
