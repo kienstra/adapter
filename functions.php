@@ -23,7 +23,7 @@ function awp_theme_support_setup() {
   $custom_header_defaults = array(
     'height' => '250px ' ,
   ) ;
-  add_theme_support( 'custom-header' , $custom_header_defaults ) ;  
+  add_theme_support( 'custom-header' , $custom_header_defaults ) ;
 }
 
 add_action( 'after_setup_theme', 'awp_editor_styles' ) ;

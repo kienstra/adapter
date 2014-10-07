@@ -67,10 +67,10 @@ article.post-preview {
   position : relative ;
 }
 
-article.post-preview .home-featured-image ,
+article.post.post-preview .home-featured-image.wp-post-image ,
 img.search-thumbnail {
   max-height : 140px ;
-  max-width  : 300px ;  
+  max-width  : 300px ;
   height : auto ;
   width : auto ;
   margin-left : 10px ;
@@ -161,10 +161,13 @@ article.post-preview .read-more-button {
 
 .wp-caption ,
 .post img {
-  max-width : 100% ;
   height : auto ;
   padding-top : 2rem ;
   padding-bottom : 2rem ;  
+}
+
+.wp-caption {
+  max-width : 100% ;
 }
 
 .wp-caption img ,

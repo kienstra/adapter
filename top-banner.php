@@ -12,7 +12,7 @@
 <?php
 $awp_tagline = trim( get_bloginfo( 'description' ) ) ;
 $awp_header_extra_markup = do_shortcode( get_option( 'awp_header_extra_markup' ) ) ;
-if ( ( '' !== $awp_tagline ) || ( '' !== $header_extra_markup ) ) :
+if ( ( '' != $awp_tagline ) || ( '' != $awp_header_extra_markup ) ) :
 ?>
 
 <nav class="<?php awp_the_classes_of_second_top_navbar() ; ?> navbar-opt-in">

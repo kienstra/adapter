@@ -6,7 +6,6 @@ DEPENDENCY LICENSES
 /bootstrap/fonts/* : MIT license , http://glyphicons.com/license/
 /inc/wp_bootstrap_navwalker.php : GPL v2 , http://www.gnu.org/licenses/gpl-2.0.txt
 
-
 FILTERS
 
 awp_editor_style_path
