@@ -30,13 +30,13 @@
     </div>
 
     <?php if ( ( ! is_user_logged_in() ) && ( get_option( 'comment_registration' ) ) ) : ?>
-	<p><?php _e( 'Please' , 'adapter-wp' ) ; ?>&nbsp;<a href="<?php echo esc_attr( wp_login_url( get_permalink() ) ) ; ?>"><?php _e( 'log in' , 'adapter-wp' ) ; ?></a>&nbsp;<?php _e( 'to make a comment.' , 'adapter-wp' ) ; ?></p>
+	<p><?php _e( 'Please' , 'adapter-wp' ) ; ?>&nbsp;<a href="<?php echo esc_url( wp_login_url( get_permalink() ) ) ; ?>"><?php _e( 'log in' , 'adapter-wp' ) ; ?></a>&nbsp;<?php _e( 'to make a comment.' , 'adapter-wp' ) ; ?></p>
     <?php else : ?>
       <form class="form-horizontal" role="form" action="<?php echo esc_url( site_url( 'wp-comments-post.php' ) ) ; ?>" method="post" id="comment-form">
       <?php if ( is_user_logged_in() ) : ?> 
 	<p>
 	  <?php _e( 'Welcome,' , 'adapter-wp' ) ;?>&nbsp;<a href="<?php echo esc_url( site_url( 'wp-admin/profile.php' ) ) ; ?>"><?php echo $user_identity ; ?></a>.
-	  <a href="<?php esc_url( wp_logout_url( get_permalink() ) ) ; ?>" title="<?php _e( 'Log out' , 'adapter-wp' ) ; ?>"><?php _e( 'Log out' , 'adapter-wp' ) ; ?></a>
+	  <a href="<?php echo esc_url( wp_logout_url( get_permalink() ) ) ; ?>" title="<?php _e( 'Log out' , 'adapter-wp' ) ; ?>"><?php _e( 'Log out' , 'adapter-wp' ) ; ?></a>
 	</p>
       <?php else : ?>
 	<div class="form-group">

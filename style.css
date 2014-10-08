@@ -159,6 +159,11 @@ article.post-preview .read-more-button {
   text-align : center ;
 }
 
+.wp-caption-text {
+  margin-left : .5em ;
+  margin-right : .5em ;
+}
+
 .wp-caption ,
 .post img {
   height : auto ;
