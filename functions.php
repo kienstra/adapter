@@ -3,9 +3,12 @@
 Filters and hooks documented in readme.txt
 */
 
-
 define( 'AWP_THEME_SLUG' , 'adapter-wp' ) ;
 define( 'AWP_THEME_VERSION' , '1.0.0' ) ; 
+
+include_once( get_template_directory() . '/includes/awp-customizer.php' ) ;
+include_once( get_template_directory() . '/includes/awp-admin-menu.php' ) ;
+include_once( apply_filters( 'awp_navwalker_path' , get_template_directory() . '/includes/wp_bootstrap_navwalker.php' ) ) ;
 
 add_action('after_setup_theme', 'awp_theme_text_domain');
 function awp_theme_text_domain() { 
@@ -62,11 +65,11 @@ add_action( 'wp_enqueue_scripts', 'awp_enqueue_js' ) ;
 function awp_enqueue_js() { 
   global $wp_scripts ;
   
-  wp_register_script( 'html5_shiv' , 'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js' , '' , AWP_THEME_VERSION , false ) ;
-  $wp_scripts->add_data( 'html5_shiv' , 'conditional' , 'lt IE 9' ) ;
+  wp_register_script( AWP_THEME_VERSION . '-html5-shiv' , get_template_directory() . '/js/html5shiv.js' , array() , AWP_THEME_VERSION , false ) ;
+  $wp_scripts->add_data( AWP_THEME_VERSION . '-html5-shiv' , 'conditional' , 'lt IE 9' ) ;
   
-  wp_register_script( 'respond_js' , 'https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js' , '' , AWP_THEME_VERSION , false ) ;
-  $wp_scripts->add_data( 'respond_js' , 'conditional' , 'lt IE 9' ) ;
+  wp_register_script( AWP_THEME_VERSION . '-respond-js' , get_template_directory() . '/js/respond.min.js' , array() , AWP_THEME_VERSION , false ) ;
+  $wp_scripts->add_data( AWP_THEME_VERSION . '-respond-js' , 'conditional' , 'lt IE 9' ) ;
   
   wp_enqueue_script( 'jquery' ) ;
 
@@ -77,22 +80,24 @@ function awp_enqueue_js() {
 
 function awp_the_classes_of_first_top_navbar() {
   // 'navbar-fixed-top' fixes navbar 
-  $type = apply_filters( 'awp_classes_of_first_top_navbar' , 'navbar navbar-default top-navbar navbar-static-top' ) ;
-  echo esc_attr( $type ) ;
+  $type = apply_filters( 'awp_classes_of_first_top_navbar' , 'navbar-default top-navbar navbar-static-top' ) ;
+  echo 'navbar ' . esc_attr( $type ) ;
 }
 
 function awp_the_classes_of_second_top_navbar() {
-  $type = apply_filters( 'awp_classes_of_second_top_navbar' , 'navbar navbar-default navbar-static-top' ) ;
-  echo esc_attr( $type ) ;
+  $type = apply_filters( 'awp_classes_of_second_top_navbar' , 'navbar-default navbar-static-top' ) ;
+  echo 'navbar ' . esc_attr( $type ) ;
+}
+
+function awp_the_classes_of_bottom_navbar() {
+  $classes = apply_filters( 'awp_classes_of_bottom_navbar' , 'navbar-default navbar-static-bottom' ) ;
+  echo 'navbar ' . esc_attr( $classes ) ;
 }
 
 add_action( 'after_setup_theme', 'awp_menu_setup' ) ;
 function awp_menu_setup() {
   register_nav_menu( 'awp_main_menu' , __( 'Main Menu', 'adapter-wp' ) ) ;
 }
-
-
-include_once( apply_filters( 'awp_navwalker_path' , get_template_directory() . '/inc/wp_bootstrap_navwalker.php' ) ) ;
 
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
   function awp_maybe_get_top_nav() {
@@ -173,7 +178,6 @@ function awp_error_message_no_details( $message ) {
   $message = 'Sorry, please try again.' ;
   return $message ;
 }
-
 
 if ( ! function_exists( 'awp_simple_copyright' ) ) { 
   function awp_simple_copyright() {
@@ -417,115 +421,6 @@ function awp_display_comment_form_or_template() {
     comment_form() ;
   } else {
     comments_template() ;
-  }
-}
-
-add_action( 'customize_register' , 'awp_change_customizer_sections' ) ;
-function awp_change_customizer_sections( $wp_customize ) {
-  $wp_customize->get_section( 'header_image' )->title = __( 'Top Banner' , 'adapter-wp' ) ; 
-  $wp_customize->remove_section( 'colors' ) ;
-  $wp_customize->remove_section( 'background_image' ) ;
-  $wp_customize->remove_section( 'nav' ) ;
-  $wp_customize->remove_section( 'static_front_page' ) ;
-}
-
-add_action( 'customize_register' , 'awp_add_customizer_sections' ) ;
-function awp_add_customizer_sections( $wp_customize ) {
-
-  $wp_customize->add_section( 'top_banner' , array(
-    'title' => __( 'Top Banner' , 'adapter-wp' ) ,
-    'priority' => '3'
-  ) ) ;
-
-  $wp_customize->add_setting( 'awp_banner_background_color' , array(
-    'default'    =>  'F8F8F8' ,
-    'capability' => 'edit_theme_options' ,
-    'transport'  => 'postMessage' ,
-  ) ) ;
-
-  $wp_customize->add_control( new WP_Customize_Color_Control(
-    $wp_customize ,
-    'banner_background_color' ,
-    array(
-      'label' => __( 'Header Backround Color' , 'adapter-wp' ) ,
-      'section' => 'header_image' ,
-      'settings' => 'awp_banner_background_color' ,
-    )
-  ) ) ;
-
-  $wp_customize->add_setting( 'awp_banner_image' , array(
-    'default'    =>  '' ,
-    'capability' => 'edit_theme_options' ,
-    'transport'  => 'postMessage' ,
-  ) ) ;
-  
-  $wp_customize->add_control( new WP_Customize_Header_Image_Control(
-    $wp_customize ,
-    'header_image' , 
-    array(
-      'label' => __( 'Banner Image' , 'adapter-wp' ) ,
-      'section' => 'top_banner' ,
-      'settings' => 'awp_banner_image' ,
-    )
-  ) ) ;
-}
-
-add_action( 'customize_register' , 'awp_enqueue_customizer_script' ) ;
-function awp_enqueue_customizer_script() { 
-  wp_enqueue_script( 'awp-customize' , get_template_directory_uri() . '/js/awp-customize.js' , array( 'jquery' , 'customize-preview' ) , '' , true ) ;
-}
-
-add_action( 'admin_menu' , 'awp_add_options_page' ) ;
-function awp_add_options_page() {
-  add_theme_page( __( 'Header & Footer' , 'adapter-wp' ) , __( 'Header & Footer' , 'adapter-wp' ) , 'unfiltered_html' , 'awp_options' , 'awp_options_output_callback' ) ;  
-}
-
-if ( ! function_exists( 'awp_options_output_callback' ) ) {
-  function awp_options_output_callback() { 
-    if ( ! current_user_can( 'unfiltered_html' ) ) {
-      die( __( 'Page not allowed, see administrator' , 'adapter-wp' ) ) ;
-    }
-
-    $name_header_extra_markup = 'awp_header_extra_markup' ;
-    $name_footer_extra_markup = 'awp_footer_extra_markup' ;
-    $name_hidden_input = 'awp_hidden_input' ;
-    
-    $value_header_extra_markup =  get_option( $name_header_extra_markup ) ;
-    $value_footer_extra_markup =  get_option( $name_footer_extra_markup ) ;
-
-    if ( isset( $_POST[ $name_hidden_input ] ) &&  ( 'Y' == $_POST[ $name_hidden_input ] ) ) : 
-      $value_header_extra_markup =   stripslashes( $_POST[ $name_header_extra_markup ] ) ;
-      update_option( $name_header_extra_markup , $value_header_extra_markup ) ; 
-      $value_footer_extra_markup =  stripslashes( $_POST[ $name_footer_extra_markup ] ) ;
-      update_option( $name_footer_extra_markup , $value_footer_extra_markup ) ;
-    ?>
-      <div class="updated"><p><strong><?php _e( 'Markup saved' , 'adapter-wp' ) ; ?></strong></p></div>
-    <?php endif ; ?>
-    
-     <div class="wrap">
-       <h1>
-	 <?php _e( 'Header and Footer' , 'adapter-wp' ) ; ?>
-       </h1>
-       <form name="header-footer-markup" method="post" action="">
-         <input type="hidden" name="<?php echo $name_hidden_input ; ?>" value="Y" >
-	 <p>
-	   <h3>
-    	     <?php _e( 'Header Extra Markup, ie. email opt-in form' , 'adapter-wp' ) ; ?>
-	   </h3>
-	   <textarea name="<?php echo $name_header_extra_markup ; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_header_extra_markup ) ; ?></textarea>
-	 </p>
-	 <br>
-	 <p>
-	   <h3>
-	     <?php _e( 'Footer Extra Markup' , 'adapter-wp' ) ; ?>
-	   </h3>
-  	   <textarea name="<?php echo $name_footer_extra_markup ; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_footer_extra_markup ) ; ?></textarea>
-	 </p>
-	 <br>	 
-	 <input type="submit" name="Submit" class="button-primary" value="<?php _e( 'Save changes' , 'adapter-wp' ) ; ?>">
-       </form>
-     </div> <!-- .wrap -->
-  <?php
   }
 }
 

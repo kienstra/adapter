@@ -5,6 +5,9 @@ DEPENDENCY LICENSES
 /bootstrap/* : MIT license , https://github.com/twbs/bootstrap/blob/master/LICENSE
 /bootstrap/fonts/* : MIT license , http://glyphicons.com/license/
 /inc/wp_bootstrap_navwalker.php : GPL v2 , http://www.gnu.org/licenses/gpl-2.0.txt
+/js/html5shiv.js : MIT/GPL2 , source : https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js
+/js/respond.min.js : MIT ,  https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
+                     source : https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js
 
 FILTERS
 
@@ -25,15 +28,17 @@ awp_js_for_bootstrap
 
 awp_classes_of_first_top_navbar
   @param string $classes Classes for the top navbar
-  default : 'navbar navbar-default top-navbar navbar-static-top'
+  default : 'navbar-default top-navbar navbar-static-top'
   also accepts: 'navbar-fixed-top' 
 
 awp_classes_of_second_top_navbar
   @param string $classes Classes for the top navbar
-  default : navbar navbar-default navbar-static-top
-
-awp_classes_of_bottom_navbar
+  default : navbar-default navbar-static-top
   
+awp_classes_of_bottom_navbar
+  @param string $classes Classes for the footer navbar
+  default : navbar-default navbar-static-bottom
+
 awp_navwalker_path
   @param string $path Path to the Bootstrap Navwalker
 
@@ -91,6 +96,9 @@ awp_navbar_bottom
 awp_after_full_single_post_content
   In single.php, after the post's content
 
+awp_before_top_nav
+  In header.php, before either of the navbars
+  
 awp_top_of_page
   In header.php, after <div class="container">
   At the top of every page
@@ -98,4 +106,3 @@ awp_top_of_page
 awp_after_comments
   In comments.php , after closing tag of comments
 
-  

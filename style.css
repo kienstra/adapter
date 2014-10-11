@@ -3,7 +3,7 @@ Theme Name: Adapter
 Theme URI: http://ryankienstra.com/adapter
 Author: ryankienstra
 Author URI: http://ryankienstra.com
-Description: Adapts to any screen size. Made for developers, with 16 filters and 3 hooks. Load your own Bootstrap css and javascript if you want. Using the admin menu, add an opt-in form to the top and bottom navbars. Select a header image and background color. Page templates include full-width, a page with a sidebar, and a landing page without a header or footer.
+Description: Adapts to any screen size. Made for developers, with 17 filters and 7 hooks. Load your own Bootstrap css and javascript if you want. Using the admin menu, add an opt-in form to the top and bottom navbars. Select a header image and background color. Page templates include full-width, a page with a sidebar, and a landing page without a header or footer.
 
 Version: 1.0.0
 License: GNU General Public License v2 or later
@@ -166,6 +166,7 @@ article.post-preview .read-more-button {
 
 .wp-caption ,
 .post img {
+  max-width : 100% ; 
   height : auto ;
   padding-top : 2rem ;
   padding-bottom : 2rem ;  
