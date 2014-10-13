@@ -18,6 +18,4 @@
     </em>
   </p>
   <?php the_content() ; ?>
-  <div class="clearfix">
-  </div>
 </article>

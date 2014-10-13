@@ -48,7 +48,7 @@
 	<div class="form-group">
 	  <label for="email" class="sr-only"><?php _e( 'Email' , 'adapter-wp' ) ; ?></label>
 	  <div class="col-md-5">
-	    <input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ) ; ?>" tabindex="2" placeholder="<?php _e( 'Email' , 'adapter-wp' ) ; ?>" <?php if ( $req ) echo "aria-required='true'" ; ?> />
+	    <input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ) ; ?>" tabindex="2" placeholder="<?php _e( 'Email (will not be published)' , 'adapter-wp' ) ; ?>" <?php if ( $req ) echo "aria-required='true'" ; ?> />
 	  </div>
 	</div>
 	<div class="form-group">

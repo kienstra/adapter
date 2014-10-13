@@ -98,6 +98,10 @@ article.post-preview .read-more-button {
   height : auto ;
 }
 
+.post {
+  overflow : auto ;
+}
+
 .post .aligncenter ,
 .post .alignleft ,
 .post .alignright {
@@ -110,17 +114,17 @@ article.post-preview .read-more-button {
 }
 
 .post .alignleft {
-  float : left ;
-  padding-right : 2rem ; 
+  float : left ; 
+  padding-right : 2em ; 
 }
 
 .post .alignright {
   float : right ;
-  padding-left : 2rem ; 
+  padding-left : 2em ; 
 }
 
 .comment-area {
-  padding-top : 15px ;
+  padding-top : 1em ;
 }
 
 .comment-area * {
@@ -143,6 +147,10 @@ article.post-preview .read-more-button {
 
 .meta-comment {
   padding-right : 10px ;
+}
+
+#respond #comment.input-lg {
+  height : 8em ; 
 }
 
 .comment-form-comment label[for=comment] {
