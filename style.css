@@ -36,7 +36,10 @@ html body #wpadminbar {
   margin-bottom : 0 ;
 }
 
-.top-navbar .dropdown:hover .dropdown-menu {
+/* on hovering on a menu item, show all its children 
+   but not when it is in mobile mode
+*/
+.navbar-collapse:not(.in) .dropdown:hover .dropdown-menu {  
   display : block ;
 }
 
@@ -69,7 +72,7 @@ article.post-preview {
 
 article.post.post-preview .home-featured-image.wp-post-image ,
 img.search-thumbnail {
-  max-height : 140px ;
+  max-height : 200px ;
   max-width  : 300px ;
   height : auto ;
   width : auto ;

@@ -3,7 +3,7 @@
 <article <?php esc_attr( post_class( 'post-preview' ) ) ; ?>>
   <a href="<?php the_permalink() ; ?>">
     <?php the_post_thumbnail(
-            array( 300 , 140 ) ,
+            array( 300 , 200 ) ,  
             array( 'class' => 'pull-right img-rounded home-wp-post-image home-featured-image' )
 	  ) ;  
     ?>
