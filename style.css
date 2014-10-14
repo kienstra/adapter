@@ -101,7 +101,7 @@ article.post-preview .read-more-button {
   height : auto ;
 }
 
-.post {
+.single-post .post {
   overflow : auto ;
 }
 
@@ -272,7 +272,7 @@ p.copyright-text {
     top : 50% ; 
     right : 0 ;
     transform : translateY(-50%) ;
-    opacity : 0.2 ; 
+    opacity : 0.5 ; 
   }
 
   .post-preview .mobile-post-permalink:hover {
