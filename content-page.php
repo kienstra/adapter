@@ -7,7 +7,6 @@
   <div class="entry-content">     
     <?php the_content() ;
     awp_custom_wp_link_pages() ;
-    /* echo '<hr>' ;  move to comments.php ? */
     awp_display_comment_form_or_template() ;       
     ?>
   </div>

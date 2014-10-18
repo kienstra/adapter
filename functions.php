@@ -173,12 +173,6 @@ remove_action( 'wp_head', 'rsd_link' ) ;
 remove_action( 'wp_head', 'wp_generator' ) ;
 remove_action( 'wp_head', 'wlwmanifest_link' ) ;
 
-add_filter( 'login_errors', 'awp_error_message_no_details' ) ;
-function awp_error_message_no_details( $message ) {
-  $message = 'Sorry, please try again.' ;
-  return $message ;
-}
-
 if ( ! function_exists( 'awp_simple_copyright' ) ) { 
   function awp_simple_copyright() {
     $name = apply_filters( 'awp_name_next_to_copyright_in_footer' , sprintf( __( '%s' , 'adapter-wp' ) , get_bloginfo( 'admin' ) ) ) ; 
@@ -378,6 +372,11 @@ function awp_widget_categories_filter( $args ) {
   return $args ; 
 }
 
+add_filter( 'the_content' , 'awp_add_clearfix_to_end_of_content' , 1 ) ;
+function awp_add_clearfix_to_end_of_content( $content ) {
+  return $content . "<div class='clearfix'></div>" ;
+}
+
 if ( ! function_exists( 'awp_query_for_page_content' ) ) { 
   function awp_query_for_page_content() {
     if ( have_posts() ) :  while ( have_posts() ) : the_post() ; 
@@ -427,46 +426,55 @@ function awp_display_comment_form_or_template() {
 if ( ! function_exists( 'awp_the_breadcrumbs' ) ) { 
   function awp_the_breadcrumbs() {
     global $post ; 
-    if ( isset( $post ) ) {
-      $parent_title = get_the_title( $post->post_parent ) ;
-      if ( $parent_title != the_title( '' , '' , false ) ) {
-        awp_manage_breadcrumbs( $parent_title ) ; 
-      }
+    if ( ! isset( $post ) ) {
+      return ;
+    }
+    if ( awp_current_post_has_parent() ) { 
+      awp_echo_breadcrumbs() ; 
     }
   }
 }
 
-if ( ! function_exists( 'awp_manage_breadcrumbs' ) ) { 
-  function awp_manage_breadcrumbs( $parent_title ) {
+function awp_current_post_has_parent() {
+  global $post ; 
+  $parent_title = get_the_title( $post->post_parent ) ;
+  return ( $parent_title != the_title( "" , "" , false ) ) ;
+}
+
+if ( ! function_exists( 'awp_echo_breadcrumbs' ) ) { 
+  function awp_echo_breadcrumbs() {
     global $post ;
-    if ( isset( $post ) ) {  
-      ?>
-	<ol class="breadcrumb">
-	  <li><a href="<?php echo home_url() ; ?>">Home</a></li>
-	  <?php awp_echo_post_parent_for_breadcrumb() ; ?>
-	  <li class="active"><?php the_title() ; ?></li>
-	</ol>
+    ?>
+      <ol class="breadcrumb">
+	<li><a href="<?php echo home_url() ; ?>">Home</a></li>
+	<li><?php awp_echo_post_parent_for_breadcrumb() ; ?></li>
+	<li class="active"><?php the_title() ; ?></li>
+      </ol>
     <?php       
-    }
   }
 }
 
 if ( ! function_exists( 'awp_echo_post_parent_for_breadcrumb' ) ) { 
   function awp_echo_post_parent_for_breadcrumb() {
     global $post ;
-    if ( isset( $post ) ) {
-      $post_parent = get_post( $post->post_parent ) ;
-      $parent_title = get_the_title( $post_parent ) ;
-      $parent_link = get_permalink( $post_parent ) ; 
-      if ( '' == $post_parent->post_content ) {
-	echo '<li class="active">' . $parent_title  . '</li>' ; 
-      } else {
-	?>
-	  <li><a href="<?php echo $parent_link ; ?>" title="<?php echo $parent_title ; ?>"><?php echo $parent_title ; ?></a></li>
-	<?php
-      }
+    $post_parent = get_post( $post->post_parent ) ;
+     
+    if ( awp_post_is_only_a_placeholder_and_has_no_content( $post_parent ) ) {
+      echo get_the_title( $post_parent ) ;
+    } else {
+      awp_echo_post_title_wrapped_in_a_link( $post_parent ) ;    
     }
   }
+}
+
+function awp_post_is_only_a_placeholder_and_has_no_content( $post_parent ) {
+  return ( "" == $post_parent->post_content ) ;
+}
+
+function awp_echo_post_title_wrapped_in_a_link( $post_parent ) {
+  $parent_title = get_the_title( $post_parent ) ;
+  $parent_link = get_permalink( $post_parent ) ;
+  echo "<a href='{$parent_link}' title='{$parent_title}'>{$parent_title}</a>\n" ;
 }
 
 if ( ! function_exists( 'awp_maybe_echo_edit_link' ) ) { 

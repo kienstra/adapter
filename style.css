@@ -101,10 +101,6 @@ article.post-preview .read-more-button {
   height : auto ;
 }
 
-.single-post .post {
-  overflow : auto ;
-}
-
 .post .aligncenter ,
 .post .alignleft ,
 .post .alignright {
