@@ -1,6 +1,6 @@
 Adapter Theme 
 
-DEPENDENCY LICENSES
+LICENSES
 
 /bootstrap/* : MIT license , https://github.com/twbs/bootstrap/blob/master/LICENSE
 /bootstrap/fonts/* : MIT license , http://glyphicons.com/license/
@@ -29,7 +29,7 @@ awp_js_for_bootstrap
 awp_classes_of_first_top_navbar
   @param string $classes Classes for the top navbar
   default : 'navbar-default top-navbar navbar-static-top'
-  also accepts: 'navbar-fixed-top' 
+  also accepts: 'navbar-fixed-top' to fix navbar 
 
 awp_classes_of_second_top_navbar
   @param string $classes Classes for the top navbar
@@ -57,6 +57,7 @@ awp_do_get_bottom_nav
 
 awp_name_next_to_copyright_in_footer
   @param string $name Name in the bottom navbar next to copyright
+  default : get_bloginfo( 'admin' ) ;
 
 awp_bottom_copyright_classes
   @param string $classes Classes of bottom copyright text
