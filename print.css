@@ -1,9 +1,9 @@
 @media print {
 
    body {
-     font-size : 12pt ;
-     margin : 0 ;
-     background : white ;
+     font-size : 12pt;
+     margin : 0;
+     background : white;
    }
    
   .header-banner-link ,
@@ -14,6 +14,6 @@
   #respond ,  
   .post-responsive-video ,
   form {
-    display : none !important ;
+    display : none !important;
   }
 }

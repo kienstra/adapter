@@ -57,7 +57,7 @@ awp_do_get_bottom_nav
 
 awp_name_next_to_copyright_in_footer
   @param string $name Name in the bottom navbar next to copyright
-  default : get_bloginfo( 'admin' ) ;
+  default : get_bloginfo( 'admin' );
 
 awp_bottom_copyright_classes
   @param string $classes Classes of bottom copyright text
@@ -79,7 +79,7 @@ awp_use_unstyled_comment_form
   default : false , causes this theme's comment form to be used instead of the wp default form
 
 To only allow comments on single posts pages, insert this code in a child theme's functions.php file:
-  add_filter( 'comments_open' , 'awp_only_allow_comments_on_single_post_page' ) ; 
+  add_filter( 'comments_open' , 'awp_only_allow_comments_on_single_post_page' ); 
 
   
 ACTION HOOKS

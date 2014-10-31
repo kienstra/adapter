@@ -1,6 +1,6 @@
-<?php defined('ABSPATH') or die( "No direct access!" ) ; ?>
+<?php defined('ABSPATH') or die( "No direct access!" ); ?>
 
-<div class="<?php awp_the_classes_of_first_top_navbar() ; ?>" role="navigation">
+<div class="<?php awp_the_classes_of_first_top_navbar(); ?>" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,9 +13,9 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-	<?php echo awp_the_top_nav_menu() ; ?>
+	<?php echo awp_the_top_nav_menu(); ?>
       </ul>
     </div><!--/.navbar-collapse -->
-    <?php do_action( 'awp_end_of_first_top_navbar' ) ; ?>
+    <?php do_action( 'awp_end_of_first_top_navbar' ); ?>
   </div>
 </div>
