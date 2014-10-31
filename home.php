@@ -1,6 +1,7 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined('ABSPATH') or die( "No direct access!" );
 
-<?php get_header(); ?>
+get_header();
+?>
 <div class="row">
 	<div class="col-md-8">
 		<?php awp_the_breadcrumbs(); ?>	 
@@ -12,4 +13,4 @@
 		<?php if ( dynamic_sidebar( 'main_sidebar' ) ); ?>
 	</div>
 </div>
-<?php get_footer(); ?>
+<?php get_footer();

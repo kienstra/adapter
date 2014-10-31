@@ -14,4 +14,4 @@
 		<?php do_action( 'awp_before_top_nav' ); ?>
 		<?php awp_maybe_get_top_nav(); ?>
 		<div class="container">
-			<?php do_action( 'awp_top_of_page' ); ?>
+			<?php do_action( 'awp_top_of_page' );

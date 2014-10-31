@@ -75,4 +75,4 @@
 		<?php endif; ?>						 
 	</div> <!-- #respond -->		
 <?php do_action( 'awp_after_comments' ); ?>
-<?php endif; ?>
+<?php endif;

@@ -13,4 +13,4 @@ get_header();
 			<?php awp_query_for_page_content(); ?>
 		</div>
 	</div> 
-<?php get_footer(); ?>
+<?php get_footer();

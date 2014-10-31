@@ -17,4 +17,4 @@ get_header();
 			<?php if ( dynamic_sidebar( 'main_sidebar' ) ); ?>
 		</div>
 	</div> <!-- .row -->
-<?php get_footer(); ?>
+<?php get_footer();

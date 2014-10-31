@@ -9,4 +9,4 @@ get_header();
 			<?php awp_query_for_post_previews(); ?>			 
 		</div>
 	</div>
-<?php get_footer(); ?>
+<?php get_footer();
