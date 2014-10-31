@@ -311,7 +311,7 @@ if ( ! function_exists( 'awp_comment_list' ) ) {
 	    <div class="content-comment media-body">
 	      <p class="date-comment pull-right text-right text-muted">
 		<?php echo human_time_diff( get_comment_time( 'U' ) , current_time( 'timestamp' ) ) ; ?> ago &nbsp;
-		<a class="permalink-comment" href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ; ?>" title="Comment link">
+		<a class="permalink-comment" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ) ; ?>" title="Comment link">
 		  <span class="glyphicon glyphicon-ink"></span>
 		</a>
 	      </p>
