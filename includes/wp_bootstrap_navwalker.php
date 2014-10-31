@@ -195,7 +195,7 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 				$fb_output .= ' id="' . $menu_id . '"';
 			}
 
-			if ( $menu_class )
+			if ( $menu_class ) {
 				$fb_output .= ' class="' . $menu_class . '"';
 			}
 			
