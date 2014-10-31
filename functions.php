@@ -250,18 +250,17 @@ if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 		}
 		?>
 			<em>
-	By:
-	<?php the_author(); ?>
-	on:
-			 <?php echo $post_date; 
-				if ( has_category() ) {
-			echo "&nbsp;in:&nbsp;";
-		the_category( ', ' );
-				}
-				if ( has_tag() )	{
-		echo ', '; 
-				}
-				the_tags( '' , ', ' , '' ); ?>
+				By:&nbsp;<?php the_author(); ?>&nbsp;on:&nbsp;<?php echo $post_date; ?>
+				<?php
+					if ( has_category() ) {
+						echo "&nbsp;in:&nbsp;";
+						the_category( ', ' );
+					}
+					if ( has_tag() ) {
+						echo ', '; 					
+						the_tags( '' , ', ' , '' );
+					}
+				?>				
 			</em>
 		<?php
 	}
