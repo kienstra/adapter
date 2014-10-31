@@ -152,8 +152,8 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 			'depth' => 2 ,
 			'container' => false ,
 			'menu_class' => 'nav navbar-nav' ,
-			'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-			'walker' => new wp_bootstrap_navwalker() ,
+			'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
+			'walker' => new WP_Bootstrap_Navwalker() ,
 		) );
 	}
 }
