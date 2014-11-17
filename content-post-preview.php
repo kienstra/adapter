@@ -24,5 +24,5 @@
 		</a>
 		<div class="clearfix"></div>
 	</p>
-	<hr>
 </article>
+<hr>

@@ -395,7 +395,7 @@ if ( ! function_exists( 'awp_query_for_post_previews' ) ) {
 	function awp_query_for_post_previews() {		 
 		if ( have_posts() ) :
 			while ( have_posts() ) :
-	the_post();
+				the_post();
 	get_template_part( 'content' , 'post-preview' );
 			endwhile;
 			awp_paginate_links();											 
