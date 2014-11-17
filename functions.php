@@ -4,7 +4,7 @@ Filters and hooks documented in readme.txt
 */
 
 define( 'AWP_THEME_SLUG' , 'adapter-wp' );
-define( 'AWP_THEME_VERSION' , '1.0.0' ); 
+define( 'AWP_THEME_VERSION' , '1.0.3' ); 
 
 include_once( get_template_directory() . '/includes/awp-customizer.php' );
 include_once( get_template_directory() . '/includes/awp-admin-menu.php' );
@@ -99,6 +99,12 @@ function awp_menu_setup() {
 	register_nav_menu( 'awp_main_menu' , __( 'Main Menu', 'adapter-wp' ) );
 }
 
+add_action( 'after_theme_setup' , 'awp_set_content_width' );
+function awp_set_content_width() { 
+	if ( ! isset( $content_width ) ) {
+		$content_width = 600;
+}
+
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
 	function awp_maybe_get_top_nav() {
 		if ( should_page_have_top_and_bottom_navs() ) { 
@@ -156,10 +162,6 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 			'walker' => new WP_Bootstrap_Navwalker() ,
 		) );
 	}
-}
-	
-if ( ! isset( $content_width ) ) {
-	 $content_width = 600;
 }
 
 add_action( 'comment_form' , 'awp_maybe_enqueue_comment_reply' );	 
