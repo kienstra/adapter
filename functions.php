@@ -20,12 +20,22 @@ function awp_theme_support_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'menus' );
 	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'custom-header' );	 
 	add_theme_support( 'post-formats', array( 'aside', 'image',
 							'video', 'quote', 'link' ) );
 	$custom_header_defaults = array(
-		'height' => '250px ' ,
-	);
+		'default-image'          => '',
+		'random-default'         => false,
+		'width'                  => 1000,
+		'height'                 => 250,
+		'flex-height'            => false,
+  		'flex-width'             => false,
+		'default-text-color'     => '',
+		'header-text'            => true,
+		'uploads'                => true,
+		'wp-head-callback'       => '',
+		'admin-head-callback'    => '',
+		'admin-preview-callback' => '',
+	);	
 	add_theme_support( 'custom-header' , $custom_header_defaults );
 }
 
