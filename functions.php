@@ -99,10 +99,11 @@ function awp_menu_setup() {
 	register_nav_menu( 'awp_main_menu' , __( 'Main Menu', 'adapter-wp' ) );
 }
 
-add_action( 'after_theme_setup' , 'awp_set_content_width' );
+add_action( 'after_setup_theme' , 'awp_set_content_width' );
 function awp_set_content_width() { 
 	if ( ! isset( $content_width ) ) {
 		$content_width = 600;
+	}
 }
 
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
