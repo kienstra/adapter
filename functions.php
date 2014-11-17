@@ -155,7 +155,7 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 		wp_nav_menu( array( 
 			'menu' => $menu_name ,
 			'theme_location' => $menu_name , 
-			'depth' => 2 ,
+			'depth' => 3 ,
 			'container' => false ,
 			'menu_class' => 'nav navbar-nav' ,
 			'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
