@@ -21,20 +21,14 @@ function awp_theme_support_setup() {
 	add_theme_support( 'menus' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'aside', 'image',
-							'video', 'quote', 'link' ) );
+							'video', 'quote', 'link' )
+	);
 	$custom_header_defaults = array(
-		'default-image'          => '',
-		'random-default'         => false,
 		'width'                  => 1000,
 		'height'                 => 250,
-		'flex-height'            => false,
-  		'flex-width'             => false,
-		'default-text-color'     => '',
-		'header-text'            => true,
-		'uploads'                => true,
-		'wp-head-callback'       => '',
-		'admin-head-callback'    => '',
-		'admin-preview-callback' => '',
+		'flex-height'            => true,
+  		'flex-width'             => true,
+		'uploads'                => true,		
 	);	
 	add_theme_support( 'custom-header' , $custom_header_defaults );
 }
@@ -127,7 +121,7 @@ if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
 
 if ( ! function_exists( 'should_page_have_top_and_bottom_navs' ) ) {
 	function should_page_have_top_and_bottom_navs() {
-		if ( is_page() && ( strpos( get_page_template() , 'no-nav' ) ) ) {
+		if ( is_page() && ( false != strpos( get_page_template() , 'no-nav' ) ) ) {
 			return false;		 
 		}
 		return true;
