@@ -1,6 +1,6 @@
 ( function( $ ) {
 	$( function() {
-	wp.customize( 'awp_banner_image' , function( value ) {
+	wp.customize( 'header_image' , function( value ) {
 		value.bind( function( to ) {
 			$( '.header-banner' ).css( 'background' , to );
 		} );
