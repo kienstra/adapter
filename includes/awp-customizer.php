@@ -21,7 +21,6 @@ function awp_add_customizer_sections( $wp_customize ) {
 	$wp_customize->add_setting( 'awp_banner_background_color' , array(
 		'default' => 'F8F8F8' ,
 		'capability' => 'edit_theme_options' ,
-		'type' => 'option' ,
 		'transport' => 'postMessage' ,
 		'sanitize_callback' => 'awp_sanitize_customizer_value' ,
 	) );
@@ -30,7 +29,7 @@ function awp_add_customizer_sections( $wp_customize ) {
 		$wp_customize ,
 		'banner_background_color' ,
 		array(
-			'label' => __( 'Header Backround Color' , 'adapter-wp' ) ,
+			'label' => __( 'Backround Color' , 'adapter-wp' ) ,
 			'section' => 'top_banner_background_color' ,
 			'settings' => 'awp_banner_background_color' ,
 		)
