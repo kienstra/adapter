@@ -4,7 +4,8 @@ Filters and hooks documented in readme.txt
 */
 
 define( 'AWP_THEME_SLUG' , 'adapter-wp' );
-define( 'AWP_THEME_VERSION' , '1.0.5' ); 
+define( 'AWP_THEME_VERSION' , '1.0.5
+' ); 
 
 include_once( get_template_directory() . '/includes/awp-customizer.php' );
 include_once( get_template_directory() . '/includes/awp-admin-menu.php' );
