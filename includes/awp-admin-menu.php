@@ -2,12 +2,12 @@
 
 add_action( 'admin_menu' , 'awp_add_options_page' );
 function awp_add_options_page() {
-	add_theme_page( __( 'Header & Footer' , 'adapter-wp' ) , __( 'Header & Footer' , 'adapter-wp' ) , 'unfiltered_html' , 'awp_options' , 'awp_options_output_callback' );	
+	add_theme_page( __( 'Header & Footer' , 'adapter-wp' ) , __( 'Header & Footer' , 'adapter-wp' ) , 'edit_theme_options' , 'awp_options' , 'awp_options_output_callback' );	
 }
 
 if ( ! function_exists( 'awp_options_output_callback' ) ) {
 	function awp_options_output_callback() { 
-		if ( ! current_user_can( 'unfiltered_html' ) ) {
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
 			die( __( 'Page not allowed, see administrator' , 'adapter-wp' ) );
 		}
 

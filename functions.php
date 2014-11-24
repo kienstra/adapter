@@ -5,14 +5,14 @@ Filters and hooks documented in readme.txt
 
 define( 'AWP_THEME_SLUG' , 'adapter-wp' );
 define( 'AWP_THEME_VERSION' , '1.0.5
-' ); 
+' );
 
 include_once( get_template_directory() . '/includes/awp-customizer.php' );
 include_once( get_template_directory() . '/includes/awp-admin-menu.php' );
 include_once( apply_filters( 'awp_navwalker_path' , get_template_directory() . '/includes/wp_bootstrap_navwalker.php' ) );
 
 add_action('after_setup_theme', 'awp_theme_text_domain');
-function awp_theme_text_domain() { 
+function awp_theme_text_domain() {
 	load_theme_textdomain( 'adapter-wp' , get_template_directory() . '/languages' );
 }
 
@@ -29,8 +29,8 @@ function awp_theme_support_setup() {
 		'height'                 => 250,
 		'flex-height'            => true,
   		'flex-width'             => true,
-		'uploads'                => true,		
-	);	
+		'uploads'                => true,
+	);
 	add_theme_support( 'custom-header' , $custom_header_defaults );
 }
 
@@ -45,7 +45,7 @@ function awp_editor_styles() {
 add_action( 'wp_enqueue_scripts', 'awp_enqueue_styles' );
 function awp_enqueue_styles() {
 	$primary_bootstrap_css_path = apply_filters( 'awp_primary_bootstrap_css_path' , get_template_directory_uri() . '/bootstrap/css/bootstrap-basic.min.css' );
-	$second_bootstrap_css_path = apply_filters( 'awp_second_bootstrap_css_path' , '' );	 
+	$second_bootstrap_css_path = apply_filters( 'awp_second_bootstrap_css_path' , '' );
 
 	// MIT License : https://github.com/twbs/bootstrap/blob/master/LICENSE
 	wp_enqueue_style( AWP_THEME_SLUG . '-primary-bootstrap-css' , $primary_bootstrap_css_path , '' , AWP_THEME_VERSION );
@@ -59,7 +59,7 @@ function awp_enqueue_styles() {
 
 function awp_enqueue_file_followed_by_style_css( $second_bootstrap_css_path ) {
 		wp_enqueue_style( AWP_THEME_SLUG . '-second-bootstrap-css' , $second_bootstrap_css_path , array( AWP_THEME_SLUG . '-primary-bootstrap-css' ) , AWP_THEME_VERSION );
-		wp_enqueue_style( AWP_THEME_SLUG . '-main-css' , get_stylesheet_uri() , array( AWP_THEME_SLUG . '-second-bootstrap-css' ) , AWP_THEME_VERSION );				
+		wp_enqueue_style( AWP_THEME_SLUG . '-main-css' , get_stylesheet_uri() , array( AWP_THEME_SLUG . '-second-bootstrap-css' ) , AWP_THEME_VERSION );
 }
 
 function awp_only_enqueue_style_css() {
@@ -67,24 +67,24 @@ function awp_only_enqueue_style_css() {
 }
 
 add_action( 'wp_enqueue_scripts', 'awp_enqueue_js' );
-function awp_enqueue_js() { 
+function awp_enqueue_js() {
 	global $wp_scripts;
-	
+
 	wp_register_script( AWP_THEME_VERSION . '-html5-shiv' , get_template_directory() . '/js/html5shiv.js' , array() , AWP_THEME_VERSION , false );
 	$wp_scripts->add_data( AWP_THEME_VERSION . '-html5-shiv' , 'conditional' , 'lt IE 9' );
-	
+
 	wp_register_script( AWP_THEME_VERSION . '-respond-js' , get_template_directory() . '/js/respond.min.js' , array() , AWP_THEME_VERSION , false );
 	$wp_scripts->add_data( AWP_THEME_VERSION . '-respond-js' , 'conditional' , 'lt IE 9' );
-	
+
 	wp_enqueue_script( 'jquery' );
 
-	// MIT License : https://github.com/twbs/bootstrap/blob/master/LICENSE	
+	// MIT License : https://github.com/twbs/bootstrap/blob/master/LICENSE
 	$main_bootstrap_js_path = apply_filters( 'awp_js_for_bootstrap' , get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js' );
 	wp_enqueue_script( 'bootstrap_js' , $main_bootstrap_js_path , array( 'jquery' ) , AWP_THEME_VERSION , true );
 }
 
 function awp_the_classes_of_first_top_navbar() {
-	// 'navbar-fixed-top' fixes navbar 
+	// 'navbar-fixed-top' fixes navbar
 	$type = apply_filters( 'awp_classes_of_first_top_navbar' , 'navbar-default top-navbar navbar-static-top' );
 	echo 'navbar ' . esc_attr( $type );
 }
@@ -105,7 +105,7 @@ function awp_menu_setup() {
 }
 
 add_action( 'after_setup_theme' , 'awp_set_content_width' );
-function awp_set_content_width() { 
+function awp_set_content_width() {
 	if ( ! isset( $content_width ) ) {
 		$content_width = 600;
 	}
@@ -113,32 +113,32 @@ function awp_set_content_width() {
 
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
 	function awp_maybe_get_top_nav() {
-		if ( should_page_have_top_and_bottom_navs() ) { 
+		if ( awp_should_page_have_top_and_bottom_navs() ) {
 			get_template_part( 'navbar-top' );
 			awp_maybe_get_top_banner_parts();
 		}
 	}
 }
 
-if ( ! function_exists( 'should_page_have_top_and_bottom_navs' ) ) {
-	function should_page_have_top_and_bottom_navs() {
+if ( ! function_exists( 'awp_should_page_have_top_and_bottom_navs' ) ) {
+	function awp_should_page_have_top_and_bottom_navs() {
 		if ( is_page() && ( false != strpos( get_page_template() , 'no-nav' ) ) ) {
-			return false;		 
+			return false;
 		}
 		return true;
 	}
 }
 
-if ( ! function_exists( 'awp_maybe_get_top_banner_parts' ) ) { 
+if ( ! function_exists( 'awp_maybe_get_top_banner_parts' ) ) {
 	function awp_maybe_get_top_banner_parts() {
 		$do_get_top_banner = apply_filters( 'awp_do_get_top_banner' , true );
-		if ( $do_get_top_banner ) { 
+		if ( $do_get_top_banner ) {
 			get_template_part( 'top-banner' );
 		}
 	}
 }
 
-if ( ! function_exists( 'awp_the_top_banner_backround_alignment' ) ) { 
+if ( ! function_exists( 'awp_the_top_banner_backround_alignment' ) ) {
 	function awp_the_top_banner_backround_alignment() {
 		$alignment = apply_filters( 'awp_top_banner_backround_alignment' , 'center' );
 		echo esc_attr( $alignment );
@@ -147,7 +147,7 @@ if ( ! function_exists( 'awp_the_top_banner_backround_alignment' ) ) {
 
 if( ! function_exists( 'awp_maybe_get_bottom_nav' ) ) {
 	function awp_maybe_get_bottom_nav() {
-		$top_and_bottom_navs_allowed = should_page_have_top_and_bottom_navs();
+		$top_and_bottom_navs_allowed = awp_should_page_have_top_and_bottom_navs();
 		$do_get_bottom_nav = apply_filters( 'awp_do_get_bottom_nav' , $top_and_bottom_navs_allowed );
 		if ( $do_get_bottom_nav ) {
 			get_template_part( 'navbar-bottom' );
@@ -155,12 +155,12 @@ if( ! function_exists( 'awp_maybe_get_bottom_nav' ) ) {
 	}
 }
 
-if ( ! function_exists( 'awp_the_top_nav_menu' ) ) { 
+if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 	function awp_the_top_nav_menu() {
 		$menu_name = 'awp_main_menu';
-		wp_nav_menu( array( 
+		wp_nav_menu( array(
 			'menu' => $menu_name ,
-			'theme_location' => $menu_name , 
+			'theme_location' => $menu_name ,
 			'depth' => 3 ,
 			'container' => false ,
 			'menu_class' => 'nav navbar-nav' ,
@@ -170,7 +170,7 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 	}
 }
 
-add_action( 'comment_form' , 'awp_maybe_enqueue_comment_reply' );	 
+add_action( 'comment_form' , 'awp_maybe_enqueue_comment_reply' );
 function awp_maybe_enqueue_comment_reply() {
 	if ( comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -181,23 +181,23 @@ remove_action( 'wp_head', 'rsd_link' );
 remove_action( 'wp_head', 'wp_generator' );
 remove_action( 'wp_head', 'wlwmanifest_link' );
 
-if ( ! function_exists( 'awp_simple_copyright' ) ) { 
+if ( ! function_exists( 'awp_simple_copyright' ) ) {
 	function awp_simple_copyright() {
-		$name = apply_filters( 'awp_name_next_to_copyright_in_footer' , sprintf( __( '%s' , 'adapter-wp' ) , get_bloginfo( 'admin' ) ) ); 
+		$name = apply_filters( 'awp_name_next_to_copyright_in_footer' , sprintf( __( '%s' , 'adapter-wp' ) , get_bloginfo( 'admin' ) ) );
 		echo "&copy;" . " " . $name . " " . date( 'Y' );
 	}
 }
 
 function awp_the_bottom_copyright_classes() {
-	echo apply_filters( 'awp_bottom_copyright_classes' , '' ); 
+	echo apply_filters( 'awp_bottom_copyright_classes' , '' );
 }
 
 if ( ! function_exists( 'awp_paginate_links' ) ) {
 	function awp_paginate_links() {
 		global $wp_query;
-		$awp_big = 999999999;		 
+		$awp_big = 999999999;
 
-		$pagination_args = array( 
+		$pagination_args = array(
 			'base' => str_replace( $awp_big, '%#%', esc_url( get_pagenum_link( $awp_big ) ) ),
 			'format' => '/page/%#%',
 			'type' => 'array' ,
@@ -207,10 +207,10 @@ if ( ! function_exists( 'awp_paginate_links' ) ) {
 			'prev_text' => sprintf( __( '%sNewer' , 'adapter-wp' ) , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' ) ,
 			'next_text' => sprintf( __( 'Older%s' , 'adapter-wp' ) , '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ) ,
 		);
-		
+
 		$pagination = paginate_links( $pagination_args );
 		$pagination_size = apply_filters( 'awp_pagination_size' , '' );
-		
+
 		?>
 		<ul class="pagination pagination-<?php echo $pagination_size; ?>">
 		<?php
@@ -236,7 +236,7 @@ if ( ! function_exists( 'awp_custom_wp_link_pages' ) ) {
 			'previouspagelink' => sprintf( __( '%sBack' , 'adapter-wp' ) , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' ) ,
 			'nextpagelink' => sprintf( __( 'Next%s' , 'adapter-wp' ) , '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ) ,
 			'next_or_number' => 'next' ,
-		); 
+		);
 		wp_link_pages( $awp_link_pages_args );
 	}
 }
@@ -244,17 +244,17 @@ if ( ! function_exists( 'awp_custom_wp_link_pages' ) ) {
 add_filter( 'wp_link_pages_link' , 'awp_pages_link_filter' );
 function awp_pages_link_filter( $link_markup ) {
 	$regex = '/(<a[^>]*?>).*?(<li[^>]??>)(.*)/';
-	$replace_with = '$2$1$3'; 
+	$replace_with = '$2$1$3';
 	$filtered_markup = preg_replace( $regex , $replace_with , $link_markup );
 	return $filtered_markup;
 }
 
-if ( ! function_exists( 'awp_author_date_category_tag' ) ) { 
+if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 	function awp_author_date_category_tag() {
 		global $post;
 		$post_date = get_the_time( get_option( 'date_format' ) );
 		if ( '' == $post->post_title ) {
-			$post_date = '<a href="' . get_the_permalink() . '">' . $post_date . '</a>'; 
+			$post_date = '<a href="' . get_the_permalink() . '">' . $post_date . '</a>';
 		}
 		?>
 			<em>
@@ -265,16 +265,16 @@ if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 						the_category( ', ' );
 					}
 					if ( has_tag() ) {
-						echo ', '; 					
+						echo ', ';
 						the_tags( '' , ', ' , '' );
 					}
-				?>				
+				?>
 			</em>
 		<?php
 	}
 }
 
-if ( ! function_exists( 'awp_register_sidebar' ) ) { 
+if ( ! function_exists( 'awp_register_sidebar' ) ) {
 	function awp_register_sidebar($name, $id, $description ) {
 		register_sidebar(array(
 		 'name'		=> sprintf( __( '%s' , 'adapter-wp' ) , $name ) ,
@@ -287,9 +287,9 @@ if ( ! function_exists( 'awp_register_sidebar' ) ) {
 		) );
 	}
 }
-	
-add_action( 'widgets_init', 'awp_widgets_init' ); 
-function awp_widgets_init() { 
+
+add_action( 'widgets_init', 'awp_widgets_init' );
+function awp_widgets_init() {
 	awp_register_sidebar( 'Main Sidebar' , 'main_sidebar', 'Diplays on selected pages' );
 }
 
@@ -301,20 +301,20 @@ function awp_mime_types( $mimes ){
 
 add_filter( 'comment_reply_link' , 'awp_reply_link' );
 function awp_reply_link( $link_class ) {
-	$comment_reply_classes = apply_filters( 'awp_comment_reply_classes' , 'btn btn-primary btn-med' ); 
+	$comment_reply_classes = apply_filters( 'awp_comment_reply_classes' , 'btn btn-primary btn-med' );
 	$link_class = str_replace( "class='comment-reply-link" , "class='comment-reply-link <?php echo $comment_reply_classes; ?>" , $link_class );
 	return $link_class;
 }
 
-if ( ! function_exists( 'awp_comment_list' ) ) { 
+if ( ! function_exists( 'awp_comment_list' ) ) {
 	function awp_comment_list( $comment , $arguments , $depth ) {
 		$_GLOBALS[ 'comment' ] = $comment;
 		?>
 		<li <?php echo comment_class( 'media' ); ?> id="comment-<?php echo comment_ID() ?>">
 		<article>
-			<div class="meta-comment pull-left"> 
+			<div class="meta-comment pull-left">
 				<?php echo get_avatar( $comment , 96 ); ?>
-			</div> 
+			</div>
 			<div class="content-comment media-body">
 				<p class="date-comment pull-right text-right text-muted">
 		<?php echo human_time_diff( get_comment_time( 'U' ) , current_time( 'timestamp' ) ); ?> ago &nbsp;
@@ -322,13 +322,13 @@ if ( ! function_exists( 'awp_comment_list' ) ) {
 			<span class="glyphicon glyphicon-ink"></span>
 		</a>
 				</p>
-				<?php if ( '0' == $comment->comment_approved ) : ?>			
+				<?php if ( '0' == $comment->comment_approved ) : ?>
 		<em>
 			<?php _e( 'The comment is in the queue for moderation' , 'adapter-wp' ); ?>
 		</em>
 				<?php else : ?>
 		<p><?php echo comment_author_link(); ?></p>
-		<?php comment_text(); ?>						 
+		<?php comment_text(); ?>
 		<div class="reply-comment pull-right">
 			<?php comment_reply_link( array_merge( $arguments , array(
 				 'reply_text' => '<span class="glyphicon glyphicon-edit"></span> &nbsp; Reply' ,
@@ -350,10 +350,10 @@ function awp_class_avatar( $avatar_class ) {
 	return $avatar_class;
 }
 
-if ( ! function_exists( 'awp_echo_list_group_of_pages' ) ) { 
+if ( ! function_exists( 'awp_echo_list_group_of_pages' ) ) {
 	function awp_echo_list_group_of_pages( $posts ) {
-		echo '<div class="list-group">';		 
-		foreach( $posts as $post ) {						 
+		echo '<div class="list-group">';
+		foreach( $posts as $post ) {
 			echo '<a class="list-group-item" href="' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>';
 		}
 		echo '</div>';
@@ -365,18 +365,18 @@ function awp_image_tag_class_filter( $classes ) {
 	return $classes . ' img-responsive';
 }
 
-add_filter( 'widget_archives_args' , 'awp_limit_archives_count' ); 
+add_filter( 'widget_archives_args' , 'awp_limit_archives_count' );
 function awp_limit_archives_count( $args ) {
 	$args[ 'limit' ] = '6';
-	return $args; 
+	return $args;
 }
 
 add_filter( 'widget_categories_args' , 'awp_widget_categories_filter' );
 function awp_widget_categories_filter( $args ) {
 	$args[ 'number' ] = 6;
-	$args[ 'orderby' ] = 'count';			 
+	$args[ 'orderby' ] = 'count';
 	$args[ 'order' ] = 'DESC';
-	return $args; 
+	return $args;
 }
 
 add_filter( 'the_content' , 'awp_add_clearfix_to_end_of_content' , 1 );
@@ -384,40 +384,40 @@ function awp_add_clearfix_to_end_of_content( $content ) {
 	return $content . "<div class='clearfix'></div>";
 }
 
-if ( ! function_exists( 'awp_query_for_page_content' ) ) { 
+if ( ! function_exists( 'awp_query_for_page_content' ) ) {
 	function awp_query_for_page_content() {
-		if ( have_posts() ) :	 while ( have_posts() ) : the_post(); 
+		if ( have_posts() ) :	 while ( have_posts() ) : the_post();
 			 get_template_part( 'content' , 'page' );
-		 endwhile; else : 
-			get_template_part( 'no-post-found' ); 
-			get_template_part( 'awp-posts-and-pages' ); 
-		endif; 
+		 endwhile; else :
+			get_template_part( 'no-post-found' );
+			get_template_part( 'awp-posts-and-pages' );
+		endif;
 		wp_reset_query();
 	}
 }
 
 if ( ! function_exists( 'awp_query_for_post_previews' ) ) {
-	function awp_query_for_post_previews() {		 
+	function awp_query_for_post_previews() {
 		if ( have_posts() ) :
 			while ( have_posts() ) :
 				the_post();
 	get_template_part( 'content' , 'post-preview' );
 			endwhile;
-			awp_paginate_links();											 
+			awp_paginate_links();
 		else :
-			get_template_part( 'no-post-found' ); 
+			get_template_part( 'no-post-found' );
 			get_template_part( 'awp-posts-and-pages' );
-			wp_reset_query(); 
-		endif; 
+			wp_reset_query();
+		endif;
 	}
 }
 
 
-// add_filter( 'comments_open' , 'awp_only_allow_comments_on_single_post_page' ); 
+// add_filter( 'comments_open' , 'awp_only_allow_comments_on_single_post_page' );
 function awp_only_allow_comments_on_single_post_page( $are_comments_open ) {
-	global $post; 
-	if ( isset( $post ) && ( 'post' == $post->post_type ) && ( is_single( $post->ID ) ) ) { 
-		return true ; 
+	global $post;
+	if ( isset( $post ) && ( 'post' == $post->post_type ) && ( is_single( $post->ID ) ) ) {
+		return true ;
 	}
 }
 
@@ -430,25 +430,25 @@ function awp_display_comment_form_or_template() {
 	}
 }
 
-if ( ! function_exists( 'awp_the_breadcrumbs' ) ) { 
+if ( ! function_exists( 'awp_the_breadcrumbs' ) ) {
 	function awp_the_breadcrumbs() {
-		global $post; 
+		global $post;
 		if ( ! isset( $post ) ) {
 			return;
 		}
-		if ( awp_current_post_has_parent() ) { 
-			awp_echo_breadcrumbs(); 
+		if ( awp_current_post_has_parent() ) {
+			awp_echo_breadcrumbs();
 		}
 	}
 }
 
 function awp_current_post_has_parent() {
-	global $post; 
+	global $post;
 	$parent_title = get_the_title( $post->post_parent );
 	return ( $parent_title != the_title( "" , "" , false ) );
 }
 
-if ( ! function_exists( 'awp_echo_breadcrumbs' ) ) { 
+if ( ! function_exists( 'awp_echo_breadcrumbs' ) ) {
 	function awp_echo_breadcrumbs() {
 		global $post;
 		?>
@@ -457,19 +457,19 @@ if ( ! function_exists( 'awp_echo_breadcrumbs' ) ) {
 	<li><?php awp_echo_post_parent_for_breadcrumb(); ?></li>
 	<li class="active"><?php the_title(); ?></li>
 			</ol>
-		<?php				
+		<?php
 	}
 }
 
-if ( ! function_exists( 'awp_echo_post_parent_for_breadcrumb' ) ) { 
+if ( ! function_exists( 'awp_echo_post_parent_for_breadcrumb' ) ) {
 	function awp_echo_post_parent_for_breadcrumb() {
 		global $post;
 		$post_parent = get_post( $post->post_parent );
-		 
+
 		if ( awp_post_is_only_a_placeholder_and_has_no_content( $post_parent ) ) {
 			echo get_the_title( $post_parent );
 		} else {
-			awp_echo_post_title_wrapped_in_a_link( $post_parent );		
+			awp_echo_post_title_wrapped_in_a_link( $post_parent );
 		}
 	}
 }
@@ -484,7 +484,7 @@ function awp_echo_post_title_wrapped_in_a_link( $post_parent ) {
 	echo "<a href='{$parent_link}' title='{$parent_title}'>{$parent_title}</a>\n";
 }
 
-if ( ! function_exists( 'awp_maybe_echo_edit_link' ) ) { 
+if ( ! function_exists( 'awp_maybe_echo_edit_link' ) ) {
 	function awp_maybe_echo_edit_link() {
 		if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
 			edit_post_link( '<span class="pull-right glyphicon glyphicon-edit"></span>' );
