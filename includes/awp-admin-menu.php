@@ -15,15 +15,12 @@ if ( ! function_exists( 'awp_options_output_callback' ) ) {
 		$name_footer_extra_markup = 'awp_footer_extra_markup';
 		$theme_option_form_action = 'action_header_footer';
 		$theme_option_form_name = 'header-footer-markup';
-
-		$value_header_extra_markup = get_theme_mod( $name_header_extra_markup );
-		$value_footer_extra_markup = get_theme_mod( $name_footer_extra_markup );
 		
 		if ( ( ! empty( $_POST ) ) && check_admin_referer( $theme_option_form_action , $theme_option_form_name ) ) : 		
-			$value_header_extra_markup = stripslashes( $_POST[ $name_header_extra_markup ] );
-			set_theme_mod( $name_header_extra_markup , $value_header_extra_markup );
-			$value_footer_extra_markup = stripslashes( $_POST[ $name_footer_extra_markup ] );
-			set_theme_mod( $name_footer_extra_markup , $value_footer_extra_markup );
+			$value_header_extra_markup = isset( $_POST[ $name_header_extra_markup ] ) ? $_POST[ $name_header_extra_markup ] : "";
+			set_theme_mod( $name_header_extra_markup , stripslashes( $value_header_extra_markup ) );
+			$value_footer_extra_markup = isset( $_POST[ $name_footer_extra_markup ] ) ? $_POST[ $name_footer_extra_markup ] : "";
+			set_theme_mod( $name_footer_extra_markup , stripslashes( $value_footer_extra_markup ) );
 			?>
 			<div class="updated"><p><strong><?php _e( 'Markup saved' , 'adapter-wp' ); ?></strong></p></div>
 		<?php endif; ?>
@@ -38,14 +35,14 @@ if ( ! function_exists( 'awp_options_output_callback' ) ) {
 					<h3>
 						<?php _e( 'Header Extra Markup, ie. email opt-in form' , 'adapter-wp' ); ?>
 					</h3>
-					<textarea name="<?php echo $name_header_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_header_extra_markup ); ?></textarea>
+					<textarea name="<?php echo $name_header_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_header_extra_markup ) ); ?></textarea>
 				</p>
 				<br>
 				<p>
 					<h3>
 						<?php _e( 'Footer Extra Markup' , 'adapter-wp' ); ?>
 					</h3>
-					<textarea name="<?php echo $name_footer_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_footer_extra_markup ); ?></textarea>
+					<textarea name="<?php echo $name_footer_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_footer_extra_markup ) ); ?></textarea>
 				</p>
 				<br>
 				<input type="submit" name="Submit" class="button-primary" value="<?php _e( 'Save changes' , 'adapter-wp' ); ?>">
