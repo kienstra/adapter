@@ -13,5 +13,5 @@
 	<body <?php echo body_class(); ?>>
 		<?php do_action( 'awp_before_top_nav' ); ?>
 		<?php awp_maybe_get_top_nav(); ?>
-		<div class="container">
+		<div class="container page-container">
 			<?php do_action( 'awp_top_of_page' );
