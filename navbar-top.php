@@ -27,7 +27,7 @@ if ( ( '' != $awp_tagline ) || ( '' != $awp_header_extra_markup ) ) :
 		<div class="container">
 			<div class="navbar-header">
 				<span class="navbar-brand">
-					<?php printf( __( '%s' , 'adapter-wp' ) , $awp_tagline ); ?>
+					<?php echo esc_html( $awp_tagline ); ?>
 				</span>
 			</div>
 			<?php echo $awp_header_extra_markup; ?>
