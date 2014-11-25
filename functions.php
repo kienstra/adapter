@@ -191,8 +191,8 @@ remove_action( 'wp_head', 'wlwmanifest_link' );
 
 if ( ! function_exists( 'awp_simple_copyright' ) ) {
 	function awp_simple_copyright() {
-		$name = apply_filters( 'awp_name_next_to_copyright_in_footer' , sprintf( __( '%s' , 'adapter-wp' ) , get_bloginfo( 'admin' ) ) );
-		echo "&copy;" . " " . $name . " " . date( 'Y' );
+		$name = apply_filters( 'awp_name_next_to_copyright_in_footer' , get_bloginfo( 'admin' ) );
+		echo esc_html( "&copy;&nbsp;" . $name . "&nbsp;" . date( 'Y' ) );
 	}
 }
 
