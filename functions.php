@@ -114,8 +114,8 @@ function awp_set_content_width() {
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
 	function awp_maybe_get_top_nav() {
 		if ( awp_should_page_have_top_and_bottom_navs() ) {
+			awp_maybe_get_top_banner_parts();		
 			get_template_part( 'navbar-top' );
-			awp_maybe_get_top_banner_parts();
 		}
 	}
 }
