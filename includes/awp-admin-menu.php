@@ -13,19 +13,18 @@ if ( ! function_exists( 'awp_options_output_callback' ) ) {
 
 		$name_header_extra_markup = 'awp_header_extra_markup';
 		$name_footer_extra_markup = 'awp_footer_extra_markup';
+		$theme_option_form_action = 'action_header_footer';
 		$theme_option_form_name = 'header-footer-markup';
 
 		$value_header_extra_markup = get_option( $name_header_extra_markup );
 		$value_footer_extra_markup = get_option( $name_footer_extra_markup );
-
-		//if ( isset( $_POST[ $name_hidden_input ] ) && ( 'Y' == $_POST[ $name_hidden_input ] ) ) :
-		if ( check_admin_referer(
 		
+		if ( ( ! empty( $_POST ) ) && check_admin_referer( $theme_option_form_action , $theme_option_form_name ) ) : 		
 			$value_header_extra_markup = stripslashes( $_POST[ $name_header_extra_markup ] );
 			update_option( $name_header_extra_markup , $value_header_extra_markup );
 			$value_footer_extra_markup = stripslashes( $_POST[ $name_footer_extra_markup ] );
 			update_option( $name_footer_extra_markup , $value_footer_extra_markup );
-		?>
+			?>
 			<div class="updated"><p><strong><?php _e( 'Markup saved' , 'adapter-wp' ); ?></strong></p></div>
 		<?php endif; ?>
 
@@ -34,21 +33,21 @@ if ( ! function_exists( 'awp_options_output_callback' ) ) {
 				<?php _e( 'Header and Footer' , 'adapter-wp' ); ?>
 			</h1>
 			<form name="<?php echo $theme_option_form_name; ?>" method="post" action="">
-				<?php wp_nonce_field( $theme_option_form_name ); ?>
-					<p>
-						<h3>
-							<?php _e( 'Header Extra Markup, ie. email opt-in form' , 'adapter-wp' ); ?>
-						</h3>
-					 	<textarea name="<?php echo $name_header_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_header_extra_markup ); ?></textarea>
-					</p>
-					<br>
-					<p>
-						<h3>
-							<?php _e( 'Footer Extra Markup' , 'adapter-wp' ); ?>
-						</h3>
-						<textarea name="<?php echo $name_footer_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_footer_extra_markup ); ?></textarea>
-					</p>
-					<br>
+				<?php wp_nonce_field( $theme_option_form_action , $theme_option_form_name ); ?>
+				<p>
+					<h3>
+						<?php _e( 'Header Extra Markup, ie. email opt-in form' , 'adapter-wp' ); ?>
+					</h3>
+					<textarea name="<?php echo $name_header_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_header_extra_markup ); ?></textarea>
+				</p>
+				<br>
+				<p>
+					<h3>
+						<?php _e( 'Footer Extra Markup' , 'adapter-wp' ); ?>
+					</h3>
+					<textarea name="<?php echo $name_footer_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( $value_footer_extra_markup ); ?></textarea>
+				</p>
+				<br>
 				<input type="submit" name="Submit" class="button-primary" value="<?php _e( 'Save changes' , 'adapter-wp' ); ?>">
 		 	</form>
 		 </div> <!-- .wrap -->
