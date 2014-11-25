@@ -111,10 +111,18 @@ function awp_set_content_width() {
 	}
 }
 
+add_filter( 'wp_title' , 'awp_fallback_title_for_home' );
+function awp_fallback_title_for_home( $title ) {
+	if ( empty( $title ) && ( is_home() || is_front_page() ) ) {
+		return get_bloginfo( 'name' );
+	}
+	return $title;
+}
+
 if ( ! function_exists( 'awp_maybe_get_top_nav' ) ) {
 	function awp_maybe_get_top_nav() {
 		if ( awp_should_page_have_top_and_bottom_navs() ) {
-			awp_maybe_get_top_banner_parts();		
+			awp_maybe_get_top_banner_parts();
 			get_template_part( 'navbar-top' );
 		}
 	}
