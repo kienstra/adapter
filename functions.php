@@ -86,12 +86,12 @@ function awp_enqueue_js() {
 function awp_the_classes_of_first_top_navbar() {
 	// 'navbar-fixed-top' fixes navbar
 	$type = apply_filters( 'awp_classes_of_first_top_navbar' , 'navbar-default top-navbar navbar-static-top' );
-	echo 'navbar ' . esc_attr( $type );
+	echo 'navbar navbar-first-top ' . esc_attr( $type );
 }
 
 function awp_the_classes_of_second_top_navbar() {
 	$type = apply_filters( 'awp_classes_of_second_top_navbar' , 'navbar-default navbar-static-top' );
-	echo 'navbar ' . esc_attr( $type );
+	echo 'navbar navbar-second-top ' . esc_attr( $type );
 }
 
 function awp_the_classes_of_bottom_navbar() {

@@ -14,17 +14,15 @@ $awp_tagline = trim( get_bloginfo( 'description' ) );
 $awp_header_extra_markup = do_shortcode( get_option( 'awp_header_extra_markup' ) );
 if ( ( '' != $awp_tagline ) || ( '' != $awp_header_extra_markup ) ) :
 ?>
-
-<nav class="<?php awp_the_classes_of_second_top_navbar(); ?> navbar-opt-in">
-	<div class="container">
-		<div class="navbar-header">
-			<span class="navbar-brand">
-	<?php printf( __( '%s' , 'adapter-wp' ) , $awp_tagline ); ?>
-			</span>
+	<nav class="<?php awp_the_classes_of_second_top_navbar(); ?> navbar-opt-in">
+		<div class="container">
+			<div class="navbar-header">
+				<span class="navbar-brand">
+					<?php printf( __( '%s' , 'adapter-wp' ) , $awp_tagline ); ?>
+				</span>
+			</div>
+			<?php echo $awp_header_extra_markup; ?>
+			<?php do_action( 'awp_end_of_top_banner' ); ?>
 		</div>
-		<?php echo $awp_header_extra_markup; ?>
-		<?php do_action( 'awp_end_of_top_banner' ); ?>
-	</div>
-</nav>
-
+	</nav>
 <?php endif;
