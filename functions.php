@@ -111,9 +111,9 @@ function awp_set_content_width() {
 	}
 }
 
-add_filter( 'wp_title' , 'awp_fallback_title_for_home' );
+add_filter( 'wp_title' , 'awp_fallback_title_for_home' , 11 );
 function awp_fallback_title_for_home( $title ) {
-	if ( empty( $title ) && ( is_home() || is_front_page() ) ) {
+	if ( ( "" == $title ) && ( is_home() || is_front_page() ) ) {
 		return get_bloginfo( 'name' );
 	}
 	return $title;

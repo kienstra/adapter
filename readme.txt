@@ -8,12 +8,12 @@ License: GNU General Public License v2 or later
 
 DEPENDENCY LICENSES
 
-/bootstrap/* : MIT license , https://github.com/twbs/bootstrap/blob/master/LICENSE
-/bootstrap/fonts/* : MIT license , http://glyphicons.com/license/
-/includes/wp_bootstrap_navwalker.php : GPL2 , http://www.gnu.org/licenses/gpl-2.0.txt
-/js/html5shiv.js : MIT/GPL2 , source : https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js
-/js/respond.min.js : MIT , https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
-	 source : https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js
+bootstrap/* : MIT license , https://github.com/twbs/bootstrap/blob/master/LICENSE
+bootstrap/fonts/* : MIT license , http://glyphicons.com/license/
+includes/wp_bootstrap_navwalker.php : GPL2 , http://www.gnu.org/licenses/gpl-2.0.txt
+js/html5shiv.js : MIT/GPL2 , source : https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js
+js/respond.min.js : MIT , https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
+	source : https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js
 
 
 TEMPLATES
@@ -22,14 +22,14 @@ Default Template (With Sidebar)
 	Description: Full navbar and sidebar
 	Main file: page.php
 
+No Sidebar
+	Description: No sidebar, but has a navbar
+	Main file: page-no-sidebar.php
+
 Landing Page
 	Description: No navbar or sidebar
 		     Blank page, but has same stylesheets as other templates
 	Main file: page-no-nav.php
-
-No Sidebar
-	Description: No sidebar, but has a navbar
-	Main file: page-no-sidebar.php
 
 
 FILTERS
