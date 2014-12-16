@@ -81,6 +81,7 @@ function awp_enqueue_js() {
 	// MIT License : https://github.com/twbs/bootstrap/blob/master/LICENSE
 	$main_bootstrap_js_path = apply_filters( 'awp_js_for_bootstrap' , get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js' );
 	wp_enqueue_script( 'bootstrap_js' , $main_bootstrap_js_path , array( 'jquery' ) , AWP_THEME_VERSION , true );
+	wp_enqueue_script( AWP_THEME_SLUG . '-third-level-menu' , get_template_directory_uri() . '/js/awp-third-level-menu' , array( 'jquery' ) ,  AWP_THEME_VERSION , true );
 }
 
 function awp_the_classes_of_first_top_navbar() {
