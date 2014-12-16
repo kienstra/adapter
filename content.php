@@ -2,7 +2,7 @@
 
 <article id="post-<?php esc_attr( the_ID() ); ?>" <?php esc_attr( post_class() ); ?>>
 	<h1>
-		<?php the_title_attribute(); ?>
+		<?php the_title(); ?>
 		<?php
 			if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
 				 edit_post_link( '<span class="glyphicon glyphicon-edit"></span>' );

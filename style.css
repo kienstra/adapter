@@ -37,9 +37,9 @@ html body #wpadminbar {
 }
 
 /* Indent 3rd-level page in menu */
-.top-navbar .menu-item-has-children .menu-item-has-children .menu-item {
+/*.top-navbar .menu-item-has-children .menu-item-has-children .menu-item {
   margin-left : 15px;
-}
+}*/
 
 /* on hovering on a menu item, show all its children 
    but not when it is in mobile mode
