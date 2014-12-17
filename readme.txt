@@ -2,7 +2,7 @@ Adapter Theme
 Theme URI: http://ryankienstra.com/themes/adapter
 Author: ryankienstra
 Author URI: http://ryankienstra.com
-Version: 1.0.5
+Version: 1.0.6
 License: GNU General Public License v2 or later
 
 
