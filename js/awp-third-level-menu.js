@@ -1,7 +1,6 @@
 ( function( $ ) {
 	$( function() {
-		var selectorForThirdLevelMenuItem = '.menu-item-has-children .menu-item-has-children',
-		    $parentOfThirdLevelMenuItems = $( selectorForThirdLevelMenuItem ),
+		var $parentOfThirdLevelMenuItems = $( '.menu-item-has-children .menu-item-has-children' ),
 		    $firstLevelMenuItemWithChildren = $parentOfThirdLevelMenuItems.parents( '.dropdown' ),
 		    cssValuesForHidden =
 			{
@@ -18,13 +17,12 @@
 			$( this ).find( '.third-level-menu' )
 				 .css( 'display' , 'block' )
 				 .animate( { 'opacity' : 1 } , 200 );
-		});
+		} );
 
 		$firstLevelMenuItemWithChildren.on( 'mouseleave' , function() {
 			$( this ).find( '.third-level-menu' )
 				 .css( cssValuesForHidden );
-		});
+		} );
 
-	});
-
-}( jQuery) );
+	} );
+} ( jQuery ) );
