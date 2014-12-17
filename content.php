@@ -5,9 +5,9 @@
 		<?php the_title(); ?>
 		<?php
 			if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
-				 edit_post_link( '<span class="glyphicon glyphicon-edit"></span>' );
+				edit_post_link( '<span class="glyphicon glyphicon-edit"></span>' );
 			}
-		?>																
+		?>
 	</h1>
 	<p>
 		<?php awp_author_date_category_tag(); ?>
