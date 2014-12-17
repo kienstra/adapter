@@ -395,7 +395,7 @@ function awp_add_clearfix_to_end_of_content( $content ) {
 
 if ( ! function_exists( 'awp_query_for_page_content' ) ) {
 	function awp_query_for_page_content() {
-		if ( have_posts() ) :	 while ( have_posts() ) : the_post();
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 			 get_template_part( 'content' , 'page' );
 		 endwhile; else :
 			get_template_part( 'no-post-found' );
