@@ -9,7 +9,7 @@
 		?>
 	</a>
 	<h2>
-		<a href="<?php the_permalink(); ?>"><?php the_title_attribute(); ?></a>
+		<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 	</h2>
 	<p>
 		<?php awp_author_date_category_tag(); ?>
