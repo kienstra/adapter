@@ -5,13 +5,13 @@
 	<div class="jumbotron">
 		<div class="container">
 			<h3><?php _e( 'Search for:' , 'adapter-wp' ); ?>&nbsp;<span class="search-keyword">&ldquo;<?php the_search_query(); ?>&rdquo;</span></h3>
-		<?php if ( '' == $number_of_results || 0 == $number_of_results ) : ?> 
+		<?php if ( '' == $number_of_results || 0 == $number_of_results ) : ?>
 	<p>
 		<span class="label label-danger">
-		      <?php _e( 'Sorry, no search results.' , 'adapter-wp' ); ?> 
+			<?php _e( 'Sorry, no search results.' , 'adapter-wp' ); ?>
 		</span>
 		&nbsp;<?php _e( 'Try different terms.' , 'adapter-wp' ); ?>
-	</p>			
+	</p>
 		<?php else : ?>
 	<p>
 		<span class="label label-success">
@@ -40,7 +40,7 @@
 							<?php previous_posts_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( 'Previous results' , 'adapter-wp' ) ); ?>
 			</li>
 			<li>
-				<?php next_posts_link( 'Next results&nbsp;<span class="glyphicon glyphicon-chevron-right"</span>' ); ?>				
+				<?php next_posts_link( 'Next results&nbsp;<span class="glyphicon glyphicon-chevron-right"</span>' ); ?>
 			</li>
 		</ul>
 	 <?php else : /* No search results */ ?>
