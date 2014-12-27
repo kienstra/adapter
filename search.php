@@ -37,17 +37,17 @@
 		<?php endwhile; ?>
 		<ul class="pager">
 			<li>
-							<?php previous_posts_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( 'Previous results' , 'adapter-wp' ) ); ?>
+				<?php previous_posts_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( 'Previous results' , 'adapter-wp' ) ); ?>
 			</li>
 			<li>
 				<?php next_posts_link( 'Next results&nbsp;<span class="glyphicon glyphicon-chevron-right"</span>' ); ?>
 			</li>
 		</ul>
-	 <?php else : /* No search results */ ?>
-		 <?php get_template_part( 'awp-posts-and-pages' ); ?>
-	 <?php endif; /* have_posts */ ?>
-			 </div>
-			 <?php get_sidebar(); ?>
-		 </div>
+	<?php else : /* No search results */ ?>
+		<?php get_template_part( 'awp-posts-and-pages' ); ?>
+	<?php endif; /* have_posts */ ?>
+		</div>
+			<?php get_sidebar(); ?>
+		</div>
 	</div>
 <?php get_footer();
