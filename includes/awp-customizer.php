@@ -39,7 +39,7 @@ function awp_add_customizer_sections( $wp_customize ) {
 
 function awp_sanitize_customizer_value( $input ) {
 	if ( current_user_can( 'edit_theme_options' ) ) {
-		return $input;
+		return esc_attr( $input );
 	}
 }
 
