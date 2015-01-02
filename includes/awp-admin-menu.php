@@ -35,14 +35,14 @@ if ( ! function_exists( 'awp_options_output_callback' ) ) {
 					<h3>
 						<?php _e( 'Header Extra Markup, ie. email opt-in form' , 'adapter-wp' ); ?>
 					</h3>
-					<textarea name="<?php echo $name_header_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_header_extra_markup ) ); ?></textarea>
+					<textarea name="<?php echo esc_attr( $name_header_extra_markup ); ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_header_extra_markup ) ); ?></textarea>
 				</p>
 				<br>
 				<p>
 					<h3>
 						<?php _e( 'Footer Extra Markup' , 'adapter-wp' ); ?>
 					</h3>
-					<textarea name="<?php echo $name_footer_extra_markup; ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_footer_extra_markup ) ); ?></textarea>
+					<textarea name="<?php echo esc_attr( $name_footer_extra_markup );  ?>" rows="10" cols="55"><?php echo esc_textarea( get_theme_mod( $name_footer_extra_markup ) ); ?></textarea>
 				</p>
 				<br>
 				<input type="submit" name="Submit" class="button-primary" value="<?php _e( 'Save changes' , 'adapter-wp' ); ?>">
