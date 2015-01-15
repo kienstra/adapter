@@ -365,13 +365,34 @@ function awp_class_avatar( $avatar_class ) {
 	return $avatar_class;
 }
 
-if ( ! function_exists( 'awp_echo_list_group_of_pages' ) ) {
-	function awp_echo_list_group_of_pages( $posts ) {
+if ( ! function_exists( 'awp_echo_pages_list_group' ) ) {
+	function awp_echo_pages_list_group() { 
+		$pages = get_pages();	
 		echo '<div class="list-group">';
-		foreach( $posts as $post ) {
-			echo '<a class="list-group-item" href="' . get_permalink( $post->ID ) . '">' . $post->post_title . '</a>';
+		foreach( $pages as $page ) {
+			echo '<a class="list-group-item" href="' . esc_url( get_permalink( $page->ID ) ) . '">'
+			   .	     esc_html( $page->post_title )
+			   . '</a>';
 		}
 		echo '</div>';
+	}
+}
+
+if ( ! function_exists( 'awp_echo_posts_list_group' ) ) {
+        function awp_echo_posts_list_group() { 
+		$arguments = array(
+				   'numberposts' => '10' ,
+				   'post_status' => 'publish'
+		);
+		$recent_posts = wp_get_recent_posts( $arguments );
+
+		echo '<div class="list-group">';
+		foreach( $recent_posts as $post ) {
+			 echo '<a class="list-group-item" href="' . esc_attr( get_permalink( $post[ "ID" ] ) ) . '">'
+			    .	      esc_html( $post[ "post_title" ] )
+			    . '</a>';
+		}
+		echo '</div>'; // .list-group
 	}
 }
 
@@ -496,7 +517,9 @@ function awp_post_is_only_a_placeholder_and_has_no_content( $post_parent ) {
 function awp_echo_post_title_wrapped_in_a_link( $post_parent ) {
 	$parent_title = get_the_title( $post_parent );
 	$parent_link = get_permalink( $post_parent );
-	echo "<a href='{$parent_link}' title='{$parent_title}'>{$parent_title}</a>\n";
+	echo '<a href="' . esc_url( $parent_link ) . '" title="' . esc_attr( $parent_title ) . '">'
+	   .	     esc_html( $parent_title )
+	   . '</a>';
 }
 
 if ( ! function_exists( 'awp_maybe_echo_edit_link' ) ) {
