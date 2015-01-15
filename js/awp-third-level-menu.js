@@ -16,7 +16,10 @@
 		$parentOfThirdLevelMenuItems.on( 'mouseenter' , function() {
 			$( this ).find( '.third-level-menu' )
 				 .css( 'display' , 'block' )
-				 .animate( { 'opacity' : 1 } , 200 );
+				 .animate(
+					   { 'opacity' : 1 } ,
+					   200
+				 );
 		} );
 
 		$firstLevelMenuItemWithChildren.on( 'mouseleave' , function() {
