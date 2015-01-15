@@ -168,13 +168,13 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 	function awp_the_top_nav_menu() {
 		$menu_name = 'awp_main_menu';
 		wp_nav_menu( array(
-			'menu' => $menu_name ,
+			'menu'           => $menu_name ,
 			'theme_location' => $menu_name ,
-			'depth' => 3 ,
-			'container' => false ,
-			'menu_class' => 'nav navbar-nav' ,
-			'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
-			'walker' => new WP_Bootstrap_Navwalker() ,
+			'depth'   	 => 3 ,
+			'container' 	 => false ,
+			'menu_class' 	 => 'nav navbar-nav' ,
+			'fallback_cb' 	 => 'WP_Bootstrap_Navwalker::fallback',
+			'walker' 	 => new WP_Bootstrap_Navwalker() ,
 		) );
 	}
 }
@@ -208,10 +208,10 @@ if ( ! function_exists( 'awp_paginate_links' ) ) {
 
 		$pagination_args = array(
 			'base' => str_replace( $awp_big, '%#%', esc_url( get_pagenum_link( $awp_big ) ) ),
-			'format' => '/page/%#%',
-			'type' => 'array' ,
-			'current' => max( 1, get_query_var( 'paged' ) ),
-			'total'	 => $wp_query->max_num_pages,
+			'format'    => '/page/%#%',
+			'type' 	    => 'array' ,
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'	    => $wp_query->max_num_pages,
 			'prev_next' => True,
 			'prev_text' => sprintf( __( '%sNewer' , 'adapter-wp' ) , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' ) ,
 			'next_text' => sprintf( __( 'Older%s' , 'adapter-wp' ) , '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ) ,
@@ -225,8 +225,11 @@ if ( ! function_exists( 'awp_paginate_links' ) ) {
 		<?php
 		if ( $pagination ) {
 			foreach ( $pagination as $page ) {
-			$class = strpos( $page , 'href' ) ? 'active' : 'disabled';
-	echo " <li class='$class'>$page</li> ";
+				$has_href = ( false !== strpos( $page , 'href' ) ); 
+				$class = $has_href ? 'active' : 'disabled';
+				echo '<li class="' . esc_attr( $class ) . '">'
+				   .	     $page 
+				   . '</li>';
 			}
 		}
 		?>
@@ -263,14 +266,17 @@ if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 		global $post;
 		$post_date = get_the_time( get_option( 'date_format' ) );
 		if ( '' == $post->post_title ) {
-			$post_date = '<a href="' . get_the_permalink() . '">' . $post_date . '</a>';
+		        // The post has no title, so make the date a link to the post page
+			$post_date = '<a href="' . esc_url( get_the_permalink() ) . '">' 
+				   .         esc_html( $post_date )
+				   . '</a>';
 		}
 		?>
 			<em>
-				By:&nbsp;<?php the_author(); ?>&nbsp;on:&nbsp;<?php echo $post_date; ?>
+				By:&nbsp;<?php echo esc_html( get_the_author() ); ?>&nbsp;on:&nbsp;<?php echo esc_html( $post_date ); ?>
 				<?php
 					if ( has_category() ) {
-						echo "&nbsp;in:&nbsp;";
+						echo '&nbsp;in:&nbsp;';
 						the_category( ', ' );
 					}
 					if ( has_tag() ) {
@@ -286,13 +292,13 @@ if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 if ( ! function_exists( 'awp_register_sidebar' ) ) {
 	function awp_register_sidebar($name, $id, $description ) {
 		register_sidebar(array(
-		 'name'		=> sprintf( __( '%s' , 'adapter-wp' ) , $name ) ,
-		 'id'		=> $id ,
-		 'description'	=> sprintf( __( '%s' , 'adapter-wp' ) , $description ) ,
-		 'before_widget'	=> '<div id="%1$s" class="widget %2$s">' ,
-		 'after_widget'	=> '</div> ' ,
-		 'before_title'	=> '<h2>' ,
-		 'after_title'	=> '</h2>' ,
+			'name'		=> sprintf( __( '%s' , 'adapter-wp' ) , $name ) ,
+			'id'		=> $id ,
+		 	'description'	=> sprintf( __( '%s' , 'adapter-wp' ) , $description ) ,
+		 	'before_widget' => '<div id="%1$s" class="widget %2$s">' ,
+		 	'after_widget'	=> '</div> ' ,
+		 	'before_title'	=> '<h2>' ,
+		 	'after_title'	=> '</h2>' ,
 		) );
 	}
 }
