@@ -171,19 +171,17 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 	public static function fallback( $args ) {
 		if ( current_user_can( 'manage_options' ) ) {
 
-			extract( $args );
-
 			$fb_output = null;
 
-			if ( $container ) {
-				$fb_output = '<' . $container;
+			if ( isset( $args[ 'container' ] ) ) {
+				$fb_output = '<' . $args[ 'container' ];
 
-				if ( $container_id ) {
-					$fb_output .= ' id="' . $container_id . '"';
+				if ( isset( $args[ 'container_id' ] ) ) {
+					$fb_output .= ' id="' . $args[ 'container_id ' ] . '"';
 				}
 
-				if ( $container_class ) {
-					$fb_output .= ' class="' . $container_class . '"';
+				if ( isset( $args[ 'container_class' ] ) ) {
+					$fb_output .= ' class="' . $args[ 'container_class' ] . '"';
 				}
 
 				$fb_output .= '>';
@@ -191,20 +189,20 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 			$fb_output .= '<ul';
 
-			if ( $menu_id ) {
-				$fb_output .= ' id="' . $menu_id . '"';
+			if ( isset( $args[ 'menu_id' ] ) ) {
+				$fb_output .= ' id="' . $args[ 'menu_id' ] . '"';
 			}
 
-			if ( $menu_class ) {
-				$fb_output .= ' class="' . $menu_class . '"';
+			if ( isset( $args[ 'menu_class' ] ) ) {
+				$fb_output .= ' class="' . $args[ 'menu_class' ] . '"';
 			}
 			
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
 			$fb_output .= '</ul>';
 
-			if ( $container ) {
-				$fb_output .= '</' . $container . '>';
+			if ( isset( $args[ 'container' ] ) ) {
+				$fb_output .= '</' . $args[ 'container' ] . '>';
 			}
 
 			echo $fb_output;
