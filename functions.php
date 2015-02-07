@@ -448,15 +448,6 @@ if ( ! function_exists( 'awp_query_for_post_previews' ) ) {
 	}
 }
 
-
-// add_filter( 'comments_open' , 'awp_only_allow_comments_on_single_post_page' );
-function awp_only_allow_comments_on_single_post_page( $are_comments_open ) {
-	global $post;
-	if ( isset( $post ) && ( 'post' == $post->post_type ) && ( is_single( $post->ID ) ) ) {
-		return true ;
-	}
-}
-
 function awp_display_comment_form_or_template() {
 	$do_use_comment_form = apply_filters( 'awp_use_unstyled_comment_form' , false );
 	if ( $do_use_comment_form ) {
