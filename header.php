@@ -10,7 +10,7 @@
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" >
 		<?php wp_head(); ?>
 	</head>
-	<body <?php echo body_class(); ?>>
+	<body <?php body_class(); ?>>
 		<?php do_action( 'awp_before_top_nav' ); ?>
 		<?php awp_maybe_get_top_nav(); ?>
 		<div class="container page-container">
