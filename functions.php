@@ -168,7 +168,7 @@ if ( ! function_exists( 'awp_the_top_nav_menu' ) ) {
 	function awp_the_top_nav_menu() {
 		$menu_name = 'awp_main_menu';
 		wp_nav_menu( array(
-			'menu'           => $menu_name ,
+			'menu' => $menu_name ,
 			'theme_location' => $menu_name ,
 			'depth'   	 => 3 ,
 			'container' 	 => false ,
