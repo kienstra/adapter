@@ -13,7 +13,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<?php echo awp_the_top_nav_menu(); ?>
+				<?php awp_the_top_nav_menu(); ?>
 			</ul>
 		</div><!--/.navbar-collapse -->
 		<?php do_action( 'awp_end_of_first_top_navbar' ); ?>
