@@ -196,7 +196,7 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 			if ( ! empty( $args[ 'menu_class' ] ) ) {
 				$fb_output .= ' class="' . $args[ 'menu_class' ] . '"';
 			}
-			
+
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
 			$fb_output .= '</ul>';
