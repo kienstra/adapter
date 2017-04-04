@@ -1,10 +1,10 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <div class="jumbotron">
 	<div class="container">
 		<h2>
 			<span class="glyphicon glyphicon-exclamation-sign"></span>
-			<?php _e( "Sorry, we couldn't find your page." , "adapter-wp" ); ?>
+			<?php _e( "Sorry, we couldn't find your page." , 'adapter-wp' ); ?>
 		</h2>
 		<h4>
 			<?php _e( 'Try a search, or click a link below.' , 'adapter-wp' ); ?>

@@ -1,4 +1,4 @@
-<?php defined( 'ABSPATH' ) or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <nav class="<?php awp_the_classes_of_bottom_navbar(); ?>" role="navigation">
 	<div class="container">

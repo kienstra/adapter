@@ -3,7 +3,7 @@
 Template Name: No Sidebar
 */
 
-defined('ABSPATH') or die( "No direct access!" ); 
+defined( 'ABSPATH' ) or die( 'No direct access!' );
 
 get_header();
 	?>

@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <?php get_header(); ?>
 	<?php $number_of_results = $wp_query->found_posts; ?>

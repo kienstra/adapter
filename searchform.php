@@ -1,4 +1,4 @@
-<?php $search_terms = ( isset( $_GET[ 's' ] ) ?	 $_GET[ 's' ] : '' ); ?>
+<?php $search_terms = ( isset( $_GET['s'] ) ?	 $_GET['s'] : '' ); ?>
 
 	<form role="form" action="<?php echo esc_url( home_url() ); ?>" method="get" id="search-form">
 	<label for="s" class="sr-only"><?php _e( 'Search' , 'adapter-wp' ); ?></label>

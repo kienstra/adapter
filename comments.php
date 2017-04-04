@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <?php if ( ( have_comments() ) && ( ! post_password_required() ) ) : ?>
 	<h3 id="comments">
@@ -15,10 +15,10 @@
 	</ol>
 	<ul class="pager">
 		<li>
-			<?php previous_comments_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( "Previous comments" , "adapter-wp" ) ); ?>
+			<?php previous_comments_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( 'Previous comments' , 'adapter-wp' ) ); ?>
 		</li>
 		<li>
-			<?php next_comments_link( __( "Next comments" , "adapter-wp" ) . '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
+			<?php next_comments_link( __( 'Next comments' , 'adapter-wp' ) . '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
 		</li>
 	</ul>
 <?php
@@ -47,7 +47,7 @@ if ( comments_open( $post->post_id ) ) : ?>
 				<div class="form-group">
 					<label for="author" class="sr-only"><?php _e( 'Name' , 'adapter-wp' ); ?></label>
 					<div class="col-md-5">
-						<input type="text" id="author" class="form-control" name="author" value="<?php echo esc_attr( $comment_author ); ?>" tabindex="1" placeholder="<?php _e( 'Name' , 'adapter-wp' ); ?>" <?php if ( $req ) echo "aria-required='true'"; ?> />
+						<input type="text" id="author" class="form-control" name="author" value="<?php echo esc_attr( $comment_author ); ?>" tabindex="1" placeholder="<?php _e( 'Name' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
 					</div>
 				</div>
 				<div class="form-group">
@@ -55,7 +55,7 @@ if ( comments_open( $post->post_id ) ) : ?>
 						<?php _e( 'Email' , 'adapter-wp' ); ?>
 					</label>
 					<div class="col-md-5">
-						<input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ); ?>" tabindex="2" placeholder="<?php _e( 'Email (will not be published)' , 'adapter-wp' ); ?>" <?php if ( $req ) echo "aria-required='true'"; ?> />
+						<input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ); ?>" tabindex="2" placeholder="<?php _e( 'Email (will not be published)' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
 					</div>
 				</div>
 				<div class="form-group">

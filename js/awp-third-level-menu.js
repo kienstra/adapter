@@ -4,9 +4,9 @@
 		    $firstLevelMenuItemWithChildren = $parentOfThirdLevelMenuItems.parents( '.dropdown' ),
 		    cssValuesForHidden =
 			{
-			  'display' : 'none' ,
-			  'opacity' : 0
-			};
+				'display' : 'none' ,
+				'opacity' : 0
+		};
 
 		$parentOfThirdLevelMenuItems.find( 'ul.dropdown-menu' )
 			.removeClass( 'dropdown-menu' )
@@ -17,8 +17,8 @@
 			$( this ).find( '.third-level-menu' )
 				 .css( 'display' , 'block' )
 				 .animate(
-					   { 'opacity' : 1 } ,
-					   200
+					 { 'opacity' : 1 } ,
+					 200
 				 );
 		} );
 

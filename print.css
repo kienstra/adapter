@@ -1,19 +1,19 @@
 @media print {
 
-   body {
-     font-size : 12pt;
-     margin : 0;
-     background : white;
-   }
-   
-  .header-banner-link ,
-  .navbar ,
-  .main-sidebar ,
-  img ,
-  a ,
-  #respond ,  
-  .post-responsive-video ,
-  form {
-    display : none !important;
-  }
+	body {
+	 font-size : 12pt;
+	 margin : 0;
+	 background : white;
+	}
+
+	.header-banner-link ,
+	.navbar ,
+	.main-sidebar ,
+	img ,
+	a ,
+	#respond ,
+	.post-responsive-video ,
+	form {
+	display : none !important;
+	}
 }

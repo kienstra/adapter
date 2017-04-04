@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <article id="post-<?php esc_attr( get_the_ID() ); ?>" <?php esc_attr( post_class( 'post' ) ); ?>>
 	<h1>

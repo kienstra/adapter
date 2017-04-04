@@ -47,11 +47,11 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 		 */
 		if ( strcasecmp( $item->attr_title, 'divider' ) == 0 && $depth === 1 ) {
 			$output .= $indent . '<li role="presentation" class="divider">';
-		} else if ( strcasecmp( $item->title, 'divider') == 0 && $depth === 1 ) {
+		} elseif ( 0 === strcasecmp( $item->title, 'divider' ) && 1 === $depth ) {
 			$output .= $indent . '<li role="presentation" class="divider">';
-		} else if ( strcasecmp( $item->attr_title, 'dropdown-header') == 0 && $depth === 1 ) {
+		} elseif ( 0 === strcasecmp( $item->attr_title, 'dropdown-header' ) && 1 === $depth ) {
 			$output .= $indent . '<li role="presentation" class="dropdown-header">' . esc_attr( $item->title );
-		} else if ( strcasecmp($item->attr_title, 'disabled' ) == 0 ) {
+		} elseif ( strcasecmp( $item->attr_title, 'disabled' ) == 0 ) {
 			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
 		} else {
 
@@ -70,10 +70,10 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 			}
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
-			$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+			$id = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 			$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output .= $indent . '<li' . $id . $value . $class_names .'>';
+			$output .= $indent . '<li' . $id . $value . $class_names . '>';
 
 			$atts = array();
 			$atts['title']  = ! empty( $item->title )	? $item->title	: '';
@@ -110,9 +110,9 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 			 * property is NOT null we apply it as the class name for the glyphicon.
 			 */
 			if ( ! empty( $item->attr_title ) ) {
-				$item_output .= '<a'. $attributes .'><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
+				$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 			} else {
-				$item_output .= '<a'. $attributes .'>';
+				$item_output .= '<a' . $attributes . '>';
 			}
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
@@ -143,19 +143,19 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 	 * @return null Null on failure with no changes to parameters.
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
-        if ( ! $element ) {
-            return;
-	}
+		if ( ! $element ) {
+			return;
+		}
 
-	$id_field = $this->db_fields['id'];
+		$id_field = $this->db_fields['id'];
 
-        // Display this element.
-        if ( is_object( $args[0] ) ) {
-           $args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		// Display this element.
+		if ( is_object( $args[0] ) ) {
+			$args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		}
+
+		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
-	
-        parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
-    	}
 
 	/**
 	 * Menu Fallback
@@ -173,15 +173,15 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 			$fb_output = null;
 
-			if ( isset( $args[ 'container' ] ) ) {
-				$fb_output = '<' . $args[ 'container' ];
+			if ( isset( $args['container'] ) ) {
+				$fb_output = '<' . $args['container'];
 
-				if ( isset( $args[ 'container_id' ] ) ) {
-					$fb_output .= ' id="' . $args[ 'container_id ' ] . '"';
+				if ( isset( $args['container_id'] ) ) {
+					$fb_output .= ' id="' . $args['container_id '] . '"';
 				}
 
-				if ( isset( $args[ 'container_class' ] ) ) {
-					$fb_output .= ' class="' . $args[ 'container_class' ] . '"';
+				if ( isset( $args['container_class'] ) ) {
+					$fb_output .= ' class="' . $args['container_class'] . '"';
 				}
 
 				$fb_output .= '>';
@@ -189,20 +189,20 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 
 			$fb_output .= '<ul';
 
-			if ( isset( $args[ 'menu_id' ] ) ) {
-				$fb_output .= ' id="' . $args[ 'menu_id' ] . '"';
+			if ( isset( $args['menu_id'] ) ) {
+				$fb_output .= ' id="' . $args['menu_id'] . '"';
 			}
 
-			if ( isset( $args[ 'menu_class' ] ) ) {
-				$fb_output .= ' class="' . $args[ 'menu_class' ] . '"';
+			if ( isset( $args['menu_class'] ) ) {
+				$fb_output .= ' class="' . $args['menu_class'] . '"';
 			}
-			
+
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
 			$fb_output .= '</ul>';
 
-			if ( isset( $args[ 'container' ] ) ) {
-				$fb_output .= '</' . $args[ 'container' ] . '>';
+			if ( isset( $args['container'] ) ) {
+				$fb_output .= '</' . $args['container'] . '>';
 			}
 
 			echo $fb_output;

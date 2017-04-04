@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 <?php get_header(); ?>
 
 <div class="row">
@@ -8,15 +8,15 @@
 			<?php awp_custom_wp_link_pages(); ?>			
 			<hr>
 			<?php do_action( 'awp_after_full_single_post_content' );
-				awp_display_comment_form_or_template();					
+				awp_display_comment_form_or_template();
 			?>
 			<ul class="pager">
 				<?php echo next_post_link( '<li>%link</li>' , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;%title' ); ?>
 				<?php echo previous_post_link( '<li>%link</li>' , '%title&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
 			</ul>
-		<?php endwhile; else:
+		<?php endwhile; else :
 			get_template_part( 'no-post-found' );
-			get_template_part( 'awp-posts-and-pages' );			
+			get_template_part( 'awp-posts-and-pages' );
 		endif;
 		?>
 	</div>

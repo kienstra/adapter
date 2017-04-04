@@ -1,11 +1,8 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <article <?php esc_attr( post_class( 'post-preview' ) ); ?>>
 	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
-		<?php the_post_thumbnail(
-				array( 300 , 200 ) ,	
-				array( 'class' => 'pull-right img-rounded home-wp-post-image home-featured-image' ) );	
-		?>
+	<?php the_post_thumbnail( array( 300, 200 ), array( 'class' => 'pull-right img-rounded home-wp-post-image home-featured-image' ) ); ?>
 	</a>
 	<h2>
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>

@@ -1,4 +1,4 @@
-<?php defined('ABSPATH') or die( "No direct access!" );
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' );
 
 get_header();
 ?>
@@ -10,7 +10,7 @@ get_header();
 	</div>
 	<div class="col-md-4 main-sidebar">
 		<?php wp_meta(); ?>
-		<?php if ( dynamic_sidebar( 'main_sidebar' ) ); ?>
+		<?php if ( dynamic_sidebar( 'main_sidebar' ) ) {;} ?>
 	</div>
 </div>
 <?php get_footer();

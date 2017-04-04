@@ -1,12 +1,12 @@
-<?php defined('ABSPATH') or die( "No direct access!" ); ?>
+<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
 <article id="post-<?php esc_attr( the_ID() ); ?>" <?php esc_attr( post_class() ); ?>>
 	<h1>
 		<?php the_title(); ?>
 		<?php
-			if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
-				edit_post_link( '<span class="glyphicon glyphicon-edit"></span>' );
-			}
+		if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) {
+			edit_post_link( '<span class="glyphicon glyphicon-edit"></span>' );
+		}
 		?>
 	</h1>
 	<p>

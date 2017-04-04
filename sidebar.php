@@ -1,4 +1,4 @@
 <?php
 
-if ( function_exists('dynamic_sidebar') && dynamic_sidebar() ) : 
+if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar() ) :
 endif;
