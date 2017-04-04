@@ -21,6 +21,7 @@ function awp_theme_support_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'menus' );
 	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'customize-selective-refresh-widgets' );
 	add_theme_support( 'post-formats', array( 'aside', 'image',
 							'video', 'quote', 'link' )
 	);
