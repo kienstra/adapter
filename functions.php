@@ -4,8 +4,7 @@ Filters and hooks documented in readme.txt
 */
 
 define( 'AWP_THEME_SLUG' , 'adapter-wp' );
-define( 'AWP_THEME_VERSION' , '1.0.6
-' );
+define( 'AWP_THEME_VERSION' , '1.0.6' );
 
 include_once( get_template_directory() . '/includes/awp-customizer.php' );
 include_once( get_template_directory() . '/includes/awp-admin-menu.php' );
@@ -25,7 +24,7 @@ function awp_theme_support_setup() {
 	add_theme_support( 'post-formats', array(
 		'aside',
 		'image',
-							'video',
+		'video',
 		'quote',
 		'link',
 		)
@@ -34,7 +33,7 @@ function awp_theme_support_setup() {
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-			'flex-width'             => true,
+		'flex-width'             => true,
 		'uploads'                => true,
 	);
 	add_theme_support( 'custom-header' , $custom_header_defaults );
@@ -272,7 +271,7 @@ if ( ! function_exists( 'awp_author_date_category_tag' ) ) {
 		global $post;
 		$post_date = get_the_time( get_option( 'date_format' ) );
 		if ( '' == $post->post_title ) {
-		        // The post has no title, so make the date a link to the post page
+				// The post has no title, so make the date a link to the post page
 			$post_date = '<a href="' . esc_url( get_the_permalink() ) . '">'
 				   . esc_html( $post_date )
 				   . '</a>';
@@ -300,11 +299,11 @@ if ( ! function_exists( 'awp_register_sidebar' ) ) {
 		register_sidebar(array(
 			'name'		=> $name,
 			'id'		=> $id,
-		 	'description'	=> $description,
-		 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		 	'after_widget'	=> '</div> ',
-		 	'before_title'	=> '<h2>',
-		 	'after_title'	=> '</h2>',
+			'description'	=> $description,
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'	=> '</div> ',
+			'before_title'	=> '<h2>',
+			'after_title'	=> '</h2>',
 		) );
 	}
 }
@@ -475,7 +474,8 @@ if ( ! function_exists( 'awp_the_breadcrumbs' ) ) {
 }
 
 function awp_current_post_has_parent() {
-	return ( false !== wp_get_post_parent_id( get_the_ID() ) );
+	$post_parent_id = wp_get_post_parent_id( get_the_ID() );
+	return ( ( false !== $post_parent_id ) && ( 0 !== $post_parent_id ) );
 }
 
 if ( ! function_exists( 'awp_echo_breadcrumbs' ) ) {
