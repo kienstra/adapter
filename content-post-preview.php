@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<article <?php esc_attr( post_class( 'post-preview' ) ); ?>>
+<article <?php esc_attr( get_post_class( 'post-preview' ) ); ?>>
 	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 	<?php the_post_thumbnail( array( 300, 200 ), array( 'class' => 'pull-right img-rounded home-wp-post-image home-featured-image' ) ); ?>
 	</a>
@@ -8,7 +8,7 @@
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
 	</h2>
 	<p>
-		<?php awp_author_date_category_tag(); ?>
+		<?php AWP_Theme::author_date_category_tag(); ?>
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="mobile-post-permalink">
 	<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>

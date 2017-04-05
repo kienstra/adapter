@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<nav class="<?php awp_the_classes_of_first_top_navbar(); ?>" role="navigation">
+<nav class="<?php echo esc_attr( AWP_Theme::get_classes_of_first_top_navbar() ); ?>" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,7 +13,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<?php echo awp_the_top_nav_menu(); ?>
+				<?php AWP_Theme::top_nav_menu(); ?>
 			</ul>
 		</div><!--/.navbar-collapse -->
 		<?php do_action( 'awp_end_of_first_top_navbar' ); ?>
@@ -23,7 +23,7 @@
 $awp_header_extra_markup = do_shortcode( get_theme_mod( 'awp_header_extra_markup' ) );
 if ( ( '' != $awp_tagline ) || ( '' != $awp_header_extra_markup ) ) :
 	?>
-	<nav class="<?php awp_the_classes_of_second_top_navbar(); ?> navbar-opt-in">
+	<nav class="<?php echo esc_attr( AWP_Theme::get_classes_of_second_top_navbar() ); ?> navbar-opt-in">
 		<div class="container">
 			<div class="navbar-header">
 				<span class="navbar-brand">

@@ -4,21 +4,21 @@
 	<?php $number_of_results = $wp_query->found_posts; ?>
 	<div class="jumbotron">
 		<div class="container">
-			<h3><?php _e( 'Search for:' , 'adapter-wp' ); ?>&nbsp;<span class="search-keyword">&ldquo;<?php the_search_query(); ?>&rdquo;</span></h3>
-		<?php if ( '' == $number_of_results || 0 == $number_of_results ) : ?>
+			<h3><?php esc_html_e( 'Search for:' , 'adapter-wp' ); ?>&nbsp;<span class="search-keyword">&ldquo;<?php the_search_query(); ?>&rdquo;</span></h3>
+		<?php if ( ( '' === $number_of_results ) || ( 0 === $number_of_results ) ) { ?>
 	<p>
 		<span class="label label-danger">
-			<?php _e( 'Sorry, no search results.' , 'adapter-wp' ); ?>
+			<?php esc_html_e( 'Sorry, no search results.' , 'adapter-wp' ); ?>
 		</span>
-		&nbsp;<?php _e( 'Try different terms.' , 'adapter-wp' ); ?>
+		&nbsp;<?php esc_html_e( 'Try different terms.' , 'adapter-wp' ); ?>
 	</p>
-		<?php else : ?>
-	<p>
-		<span class="label label-success">
-			<?php printf( _n( '1 result' , '%s results' , $number_of_results , 'adapter-wp' ) , $number_of_results ); ?>
-		</span>
-	</p>
-		<?php endif; ?>
+		<?php } else { ?>
+		<p>
+			<span class="label label-success">
+				<?php echo esc_html( sprintf( _n( '%s result', '%s results', $number_of_results, 'adapter-wp' ), $number_of_results ) ); ?>
+			</span>
+		</p>
+		<?php } ?>
 			<div class="row">
 	<div class="col-md-5">
 		<?php get_search_form(); ?>

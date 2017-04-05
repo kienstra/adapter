@@ -9,12 +9,14 @@ get_header();
 ?>
 	<div class="row">
 		<div class="col-md-8">
-			<?php awp_the_breadcrumbs(); ?>
-			<?php awp_query_for_page_content(); ?>
+			<?php AWP_Theme::the_breadcrumbs(); ?>
+			<?php AWP_Theme::query_for_page_content(); ?>
 		</div> <!-- col-md-8 -->
 		<div class="col-md-4 main-sidebar">
-			<?php wp_meta(); ?>		 
-			<?php if ( dynamic_sidebar( 'main_sidebar' ) ) {;} ?>
+			<?php wp_meta(); ?>
+			<?php if ( is_active_sidebar( 'main_sidebar' ) ) : ?>
+				<?php dynamic_sidebar( 'main_sidebar' ); ?>
+			<?php endif; ?>
 		</div>
-	</div> <!-- .row -->
+	</div>
 <?php get_footer();

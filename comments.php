@@ -11,7 +11,7 @@
 	</h3>
 
 	<ol class="comment-area media-list">
-		<?php wp_list_comments( 'callback=awp_comment_list' ); ?>
+		<?php wp_list_comments( 'callback=AWP_Theme::comment_list' ); ?>
 	</ol>
 	<ul class="pager">
 		<li>
@@ -23,7 +23,7 @@
 	</ul>
 <?php
 endif; // if has comments and no password required
-if ( comments_open( $post->post_id ) ) : ?>
+if ( comments_open( get_the_ID() ) ) : ?>
 	<div id="respond">
 		<h4>
 			<?php comment_form_title( __( 'Leave a comment' , 'adapter-wp' ) , __( 'Leave a comment for %' , 'adapter-wp' ) ); ?>
@@ -68,7 +68,7 @@ if ( comments_open( $post->post_id ) ) : ?>
 				</div>
 			<?php endif; ?>
 			<div class="form-group">
-				<label class="sr-only" for="comment"><?php _e( 'Comment' , 'adapter-wp' ); ?></label>
+				<label class="sr-only" for="comment"><?php esc_html_e( 'Comment' , 'adapter-wp' ); ?></label>
 				<div class="col-md-10">
 					<textarea class="input-lg form-control" id="comment" name="comment" tabindex="4" placeholder="<?php _e( 'Comment' , 'adapter-wp' ); ?>"></textarea>
 				</div>
@@ -79,7 +79,7 @@ if ( comments_open( $post->post_id ) ) : ?>
 					<?php comment_id_fields(); ?>
 				</div>
 			</div>
-			<?php do_action( 'comment_form' , $post->ID ); ?>
+			<?php do_action( 'comment_form', $post->ID ); ?>
 		</form>
 		<?php endif; ?>
 	</div> <!-- #respond -->

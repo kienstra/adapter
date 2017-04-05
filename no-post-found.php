@@ -4,10 +4,10 @@
 	<div class="container">
 		<h2>
 			<span class="glyphicon glyphicon-exclamation-sign"></span>
-			<?php _e( "Sorry, we couldn't find your page." , 'adapter-wp' ); ?>
+			<?php esc_attr_e( "Sorry, we couldn't find your page." , 'adapter-wp' ); ?>
 		</h2>
 		<h4>
-			<?php _e( 'Try a search, or click a link below.' , 'adapter-wp' ); ?>
+			<?php esc_attr_e( 'Try a search, or click a link below.' , 'adapter-wp' ); ?>
 		</h4>
 		<div class="row">
 			<div class="col-md-5">
