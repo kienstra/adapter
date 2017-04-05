@@ -6,7 +6,7 @@ get_header();
 		<div class="col-md-12">
 			<?php AWP_Theme::the_breadcrumbs(); ?>
 			<h1><?php wp_title( '' ); ?></h1>
-			<?php AWP_Theme::query_for_post_previews(); ?>
+			<?php get_template_part( 'query-post-previews' ); ?>
 		</div>
 	</div>
 <?php get_footer();

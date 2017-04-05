@@ -240,31 +240,6 @@ class AWP_Theme {
 		echo '</div>'; // .list-group
 	}
 
-	public static function query_for_page_content() {
-		if ( have_posts() ) : while ( have_posts() ) : the_post();
-				get_template_part( 'content', 'page' );
-		endwhile; else :
-				get_template_part( 'no-post-found' );
-				get_template_part( 'awp-posts-and-pages' );
-		endif;
-			wp_reset_query();
-	}
-
-	// @todo: refactor this into template content-post-previews.php and get_template_part()
-	public static function query_for_post_previews() {
-		if ( have_posts() ) :
-			while ( have_posts() ) :
-				the_post();
-				get_template_part( 'content', 'post-preview' );
-			endwhile;
-			self::paginate_links();
-		else :
-			get_template_part( 'no-post-found' );
-			get_template_part( 'awp-posts-and-pages' );
-			wp_reset_postdata();
-		endif;
-	}
-
 	public static function display_comment_form_or_template() {
 		$do_use_comment_form = apply_filters( 'awp_use_unstyled_comment_form', false );
 		if ( $do_use_comment_form ) {

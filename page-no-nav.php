@@ -4,5 +4,5 @@ Template Name: Blank, No Nav Bar
 */
 
 get_header();
-	AWP_Theme::query_for_page_content();
+	get_template_part( 'query-page-content' );
 get_footer();

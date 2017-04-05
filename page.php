@@ -10,7 +10,7 @@ get_header();
 	<div class="row">
 		<div class="col-md-8">
 			<?php AWP_Theme::the_breadcrumbs(); ?>
-			<?php AWP_Theme::query_for_page_content(); ?>
+			<?php get_template_part( 'query-page-content' ); ?>
 		</div> <!-- col-md-8 -->
 		<div class="col-md-4 main-sidebar">
 			<?php wp_meta(); ?>
