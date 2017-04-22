@@ -7,9 +7,8 @@
 			<?php get_template_part( 'content' , get_post_format() ); ?>
 			<?php AWP_Theme::custom_wp_link_pages(); ?>
 			<hr>
-			<?php do_action( 'awp_after_full_single_post_content' );
-				AWP_Theme::display_comment_form_or_template();
-			?>
+			<?php do_action( 'awp_after_full_single_post_content' ); ?>
+			<?php comments_template(); ?>
 			<ul class="pager">
 				<?php echo next_post_link( '<li>%link</li>' , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;%title' ); ?>
 				<?php echo previous_post_link( '<li>%link</li>' , '%title&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
