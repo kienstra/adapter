@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<nav class="<?php awp_the_classes_of_bottom_navbar(); ?>" role="navigation">
+<nav class="<?php echo esc_attr( AWP_Theme::get_classes_of_bottom_navbar() ); ?>" role="navigation">
 	<div class="container">
 		<?php echo do_shortcode( get_theme_mod( 'awp_footer_extra_markup' ) ); ?>
 		<?php do_action( 'awp_navbar_bottom' ); ?>

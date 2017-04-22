@@ -25,6 +25,13 @@ class AWP_Theme {
 	public static $default_second_top_navbar_classes = 'navbar navbar-second-top navbar-default navbar-static-top';
 
 	/**
+	 * Bottom navbar classes to output by default.
+	 *
+	 * @var string
+	 */
+	public static $default_bottom_navbar_classes = 'navbar navbar-default navbar-static-bottom';
+
+	/**
 	 * Get the classes to display in the first top navigation bar.
 	 *
 	 * @return string $classes First top navbar classes.
@@ -57,6 +64,23 @@ class AWP_Theme {
 		return apply_filters( 'awp_classes_of_second_top_navbar', self::$default_second_top_navbar_classes );
 	}
 
+	/**
+	 * Get the classes for the bottom navbar.
+	 *
+	 * Bootstrap uses the class navbar, but this does not have navigation.
+	 * It shares classes with the navigation bar.
+	 *
+	 * @return string $classes Bottom navbar classes.
+	 */
+	public static function get_classes_of_bottom_navbar() {
+
+		/**
+		 * Classes to output in the second top Bootstrap menu.
+		 *
+		 * @param string $default_top_navbar_classes Bootstrap classes to output by default.
+		 */
+		return apply_filters( 'awp_classes_of_bottom_navbar', self::$default_bottom_navbar_classes );
+	}
 
 	public static function maybe_get_top_nav() {
 		if ( self::should_page_have_top_and_bottom_navs() ) {
@@ -98,11 +122,11 @@ class AWP_Theme {
 		wp_nav_menu( array(
 			'menu'           => $menu_name,
 			'theme_location' => $menu_name,
-			'depth'   	 => 3,
-			'container' 	 => false,
-			'menu_class' 	 => 'nav navbar-nav',
-			'fallback_cb' 	 => 'WP_Bootstrap_Navwalker::fallback',
-			'walker' 	 => new WP_Bootstrap_Navwalker(),
+			'depth'          => 3,
+			'container'      => false,
+			'menu_class'     => 'nav navbar-nav',
+			'fallback_cb'    => 'WP_Bootstrap_Navwalker::fallback',
+			'walker'         => new WP_Bootstrap_Navwalker(),
 		) );
 	}
 
