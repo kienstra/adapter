@@ -9,7 +9,6 @@
 			Comment
 		</a>
 	</h3>
-
 	<ol class="comment-area media-list">
 		<?php wp_list_comments( 'callback=AWP_Theme::comment_list' ); ?>
 	</ol>
@@ -21,9 +20,8 @@
 			<?php next_comments_link( __( 'Next comments' , 'adapter-wp' ) . '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
 		</li>
 	</ul>
-<?php
-endif; // if has comments and no password required
-if ( comments_open( get_the_ID() ) ) : ?>
+<?php endif; ?>
+<?php if ( comments_open( get_the_ID() ) ) : ?>
 	<div id="respond">
 		<h4>
 			<?php comment_form_title( __( 'Leave a comment' , 'adapter-wp' ) , __( 'Leave a comment for %' , 'adapter-wp' ) ); ?>
@@ -40,37 +38,39 @@ if ( comments_open( get_the_ID() ) ) : ?>
 			<form class="form-horizontal" role="form" action="<?php echo esc_url( site_url( 'wp-comments-post.php' ) ); ?>" method="post" id="comment-form">
 			<?php if ( is_user_logged_in() ) : ?>
 				<p>
-					<?php _e( 'Welcome,' , 'adapter-wp' );?>&nbsp;<a href="<?php echo esc_url( site_url( 'wp-admin/profile.php' ) ); ?>"><?php echo $user_identity; ?></a>.
-					<a href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>" title="<?php _e( 'Log out' , 'adapter-wp' ); ?>"><?php _e( 'Log out' , 'adapter-wp' ); ?></a>
+					<?php esc_html_e( 'Welcome,' , 'adapter-wp' );?>&nbsp;<a href="<?php echo esc_url( site_url( 'wp-admin/profile.php' ) ); ?>"><?php echo esc_html( $user_identity ); ?></a>.
+					<a href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>" title="<?php esc_attr_e( 'Log out' , 'adapter-wp' ); ?>"><?php esc_html_e( 'Log out' , 'adapter-wp' ); ?></a>
 				</p>
 			<?php else : ?>
 				<div class="form-group">
-					<label for="author" class="sr-only"><?php _e( 'Name' , 'adapter-wp' ); ?></label>
+					<label for="author" class="sr-only">
+						<?php esc_html_e( 'Name' , 'adapter-wp' ); ?>
+					</label>
 					<div class="col-md-5">
-						<input type="text" id="author" class="form-control" name="author" value="<?php echo esc_attr( $comment_author ); ?>" tabindex="1" placeholder="<?php _e( 'Name' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
+						<input type="text" id="author" class="form-control" name="author" value="<?php echo esc_attr( $comment_author ); ?>" tabindex="1" placeholder="<?php esc_attr_e( 'Name' , 'adapter-wp' ); ?>"<?php echo ( $req ) ? ' aria-required="true"' : null; ?>/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email" class="sr-only">
-						<?php _e( 'Email' , 'adapter-wp' ); ?>
+						<?php esc_html_e( 'Email' , 'adapter-wp' ); ?>
 					</label>
 					<div class="col-md-5">
-						<input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ); ?>" tabindex="2" placeholder="<?php _e( 'Email (will not be published)' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
+						<input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ); ?>" tabindex="2" placeholder="<?php esc_attr_e( 'Email (will not be published)' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="url" class="sr-only">
-						<?php _e( 'Url' , 'adapter-wp' ); ?>
+						<?php esc_html_e( 'Url' , 'adapter-wp' ); ?>
 					</label>
 					<div class="col-md-5">
-						<input type="text" id="url" name="url" class="form-control" value="<?php echo esc_attr( $comment_author_url ); ?>" tabindex="3" placeholder="<?php _e( 'Url' , 'adapter-wp' ); ?>" />
+						<input type="text" id="url" name="url" class="form-control" value="<?php echo esc_attr( $comment_author_url ); ?>" tabindex="3" placeholder="<?php esc_attr_e( 'Url' , 'adapter-wp' ); ?>" />
 					</div>
 				</div>
 			<?php endif; ?>
 			<div class="form-group">
 				<label class="sr-only" for="comment"><?php esc_html_e( 'Comment' , 'adapter-wp' ); ?></label>
 				<div class="col-md-10">
-					<textarea class="input-lg form-control" id="comment" name="comment" tabindex="4" placeholder="<?php _e( 'Comment' , 'adapter-wp' ); ?>"></textarea>
+					<textarea class="input-lg form-control" id="comment" name="comment" tabindex="4" placeholder="<?php esc_html_e( 'Comment' , 'adapter-wp' ); ?>"></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -79,9 +79,8 @@ if ( comments_open( get_the_ID() ) ) : ?>
 					<?php comment_id_fields(); ?>
 				</div>
 			</div>
-			<?php do_action( 'comment_form', $post->ID ); ?>
 		</form>
 		<?php endif; ?>
-	</div> <!-- #respond -->
-<?php do_action( 'awp_after_comments' ); ?>
-<?php endif; // if comments are open for this post
+	</div>
+	<?php do_action( 'comment_form', get_the_ID() ); ?>
+<?php endif;
