@@ -15,7 +15,14 @@ class AWP_Theme {
 	 *
 	 * @var string
 	 */
-	public static $default_top_navbar_classes = 'navbar-default top-navbar navbar-static-top';
+	public static $default_top_navbar_classes = 'navbar navbar-default top-navbar navbar-static-top navbar-first-top ';
+
+	/**
+	 * Second top navbar classes to output by default.
+	 *
+	 * @var string
+	 */
+	public static $default_second_top_navbar_classes = 'navbar navbar-second-top navbar-default navbar-static-top';
 
 	/**
 	 * Get the classes to display in the first top navigation bar.
@@ -30,10 +37,9 @@ class AWP_Theme {
 		 * Using the class 'navbar-fixed-top' fixes the navbar.
 		 * See Bootstrap documentation for these classes.
 		 *
-		 * @param string $default_classes Bootstrap classes to ouput by default.
+		 * @param string $default_top_navbar_classes Bootstrap classes to output by default.
 		 */
-		$type = apply_filters( 'awp_classes_of_first_top_navbar', self::$default_top_navbar_classes );
-		return 'navbar navbar-first-top ' . esc_attr( $type );
+		return apply_filters( 'awp_classes_of_first_top_navbar', self::$default_top_navbar_classes );
 	}
 
 	/**
@@ -42,8 +48,13 @@ class AWP_Theme {
 	 * @return string $classes Second top navbar classes.
 	 */
 	public static function get_classes_of_second_top_navbar() {
-		$type = apply_filters( 'awp_classes_of_second_top_navbar', 'navbar-default navbar-static-top' );
-		echo 'navbar navbar-second-top ' . esc_attr( $type );
+
+		/**
+		 * Classes to output in the second top Bootstrap menu.
+		 *
+		 * @param string $default_top_navbar_classes Bootstrap classes to output by default.
+		 */
+		return apply_filters( 'awp_classes_of_second_top_navbar', self::$default_second_top_navbar_classes );
 	}
 
 
