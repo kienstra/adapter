@@ -11,6 +11,6 @@
 		<h3>
 			<?php esc_html_e( 'Pages' , 'adapter-wp' ); ?>
 		</h3>
-		<?php AWP_THEME::pages_list_group(); ?>
+		<?php echo wp_kses_post( AWP_THEME::get_pages_list_group() ); ?>
 	</div>
 </div>

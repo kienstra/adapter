@@ -235,15 +235,20 @@ class AWP_Theme {
 	<?php
 	}
 
-	public static function pages_list_group() {
+	/**
+	 * Get the pages in a format that uses Bootstrap's styling for list-group.
+	 *
+	 * @return string $markup Bootstrap .list-group markup for pages.
+	 */
+	public static function get_pages_list_group() {
 		$pages = get_pages();
-		echo '<div class="list-group">';
+		$markup = '<div class="list-group">';
 		foreach ( $pages as $page ) {
-			echo '<a class="list-group-item" href="' . esc_url( get_permalink( $page->ID ) ) . '">'
+			$markup .= '<a class="list-group-item" href="' . esc_url( get_permalink( $page->ID ) ) . '">'
 				. esc_html( $page->post_title )
 				. '</a>';
 		}
-		echo '</div>';
+		return $markup . '</div>';
 	}
 
 	public static function posts_list_group() {
