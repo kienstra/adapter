@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<article id="post-<?php echo esc_attr( get_the_ID() ); ?>" <?php echo esc_attr( get_post_class() ); ?>>
+<article id="post-<?php echo esc_attr( get_the_ID() ); ?>" class="<?php echo esc_attr( implode( ' ', array_filter( get_post_class( 'post' ) ) ) ); ?>">
 	<h1>
 		<?php the_title(); ?>
 		<?php
