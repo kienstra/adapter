@@ -5,5 +5,7 @@
 		<?php echo do_shortcode( get_theme_mod( 'awp_footer_extra_markup' ) ); ?>
 		<?php do_action( 'awp_navbar_bottom' ); ?>
 	</div>
-	<p class="<?php esc_attr( AWP_Theme::get_bottom_copyright_classes() ); ?> copyright-text"><?php AWP_Theme::simple_copyright(); ?></p>
+	<p class="<?php esc_attr( AWP_Theme::get_bottom_copyright_classes() ); ?> copyright-text">
+		<?php echo esc_html( AWP_Theme::get_copyright() ); ?>
+	</p>
 </nav>

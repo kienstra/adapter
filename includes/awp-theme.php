@@ -86,7 +86,7 @@ class AWP_Theme {
 	}
 
 	public static function maybe_bottom_nav() {
-		$top_and_bottom_navs_allowed = awp_should_page_have_top_and_bottom_navs();
+		$top_and_bottom_navs_allowed = self::should_page_have_top_and_bottom_navs();
 		$do_get_bottom_nav = apply_filters( 'awp_do_get_bottom_nav', $top_and_bottom_navs_allowed );
 		if ( $do_get_bottom_nav ) {
 			get_template_part( 'navbar-bottom' );
@@ -106,9 +106,20 @@ class AWP_Theme {
 		) );
 	}
 
-	public static function simple_copyright() {
+	/**
+	 * Get the copyright text to output in the bottom navbar.
+	 *
+	 * @return string $copyrigh_text To display in the footer.
+	 */
+	public static function get_copyright() {
+
+		/**
+		 * The name to display after the copyright text.
+		 *
+		 * @param string $admin The administrator of the site.
+		 */
 		$name = apply_filters( 'awp_name_next_to_copyright_in_footer', get_bloginfo( 'admin' ) );
-		echo esc_html( '&copy;&nbsp;' . $name . '&nbsp;' . date( 'Y' ) );
+		return esc_html( '&copy;&nbsp;' . $name . '&nbsp;' . date( 'Y' ) );
 	}
 
 	public static function get_bottom_copyright_classes() {
