@@ -251,20 +251,25 @@ class AWP_Theme {
 		return $markup . '</div>';
 	}
 
-	public static function posts_list_group() {
+	/**
+	 * Get the posts Bootstrap's .list-group format.
+	 *
+	 * @return string $markup Bootstrap .list-group markup for posts.
+	 */
+	public static function get_posts_list_group() {
 		$arguments = array(
-		   'numberposts' => '10',
-		   'post_status' => 'publish',
+			'numberposts' => '10',
+			'post_status' => 'publish',
 		);
 		$recent_posts = wp_get_recent_posts( $arguments );
+		$markup = '<div class="list-group">';
 
-		echo '<div class="list-group">';
 		foreach ( $recent_posts as $post ) {
-			 echo '<a class="list-group-item" href="' . esc_attr( get_permalink( $post['ID'] ) ) . '">'
+			$markup .= '<a class="list-group-item" href="' . esc_attr( get_permalink( $post['ID'] ) ) . '">'
 			. esc_html( $post['post_title'] )
 			. '</a>';
 		}
-		echo '</div>'; // .list-group
+		return $markup . '</div>';
 	}
 
 	public static function display_comment_form_or_template() {

@@ -5,7 +5,7 @@
 		<h3>
 			<?php esc_html_e( 'Articles' , 'adapter-wp' ); ?>
 		</h3>
-		<?php AWP_Theme::posts_list_group() ?>
+		<?php echo wp_kses_post( AWP_Theme::get_posts_list_group() ); ?>
 	</div> <!-- .search-posts -->
 	<div class="col-md-6 site-pages">
 		<h3>
