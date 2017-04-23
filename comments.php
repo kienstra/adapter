@@ -1,6 +1,6 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<?php if ( ( have_comments() ) && ( ! post_password_required() ) ) : ?>
+<?php if ( comments_open() && have_comments() && ( ! post_password_required() ) ) : ?>
 	<h3 id="comments">
 		<span class="glyphicon glyphicon-comment"></span>&nbsp;
 		<?php comments_number( __( 'No comment' , 'adapter-wp' ) , __( 'A comment' , 'adapter-wp' ) , __( '% comments' , 'adapter-wp' ) ); ?>
@@ -21,7 +21,7 @@
 		</li>
 	</ul>
 <?php endif; ?>
-<?php if ( comments_open( get_the_ID() ) ) : ?>
+<?php if ( comments_open() ) : ?>
 	<div id="respond">
 		<h4>
 			<?php comment_form_title( __( 'Leave a comment' , 'adapter-wp' ) , __( 'Leave a comment for %' , 'adapter-wp' ) ); ?>
