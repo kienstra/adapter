@@ -110,8 +110,7 @@ class AWP_Theme {
 	}
 
 	public static function maybe_bottom_nav() {
-		$top_and_bottom_navs_allowed = self::should_page_have_top_and_bottom_navs();
-		$do_get_bottom_nav = apply_filters( 'awp_do_get_bottom_nav', $top_and_bottom_navs_allowed );
+		$do_get_bottom_nav = apply_filters( 'awp_do_get_bottom_nav', self::should_page_have_top_and_bottom_navs() );
 		if ( $do_get_bottom_nav ) {
 			get_template_part( 'navbar-bottom' );
 		}
@@ -198,35 +197,33 @@ class AWP_Theme {
 		wp_link_pages( $awp_link_pages_args );
 	}
 
-	public static function author_date_category_tag() {
-		global $post;
-		$post_date = get_the_time( get_option( 'date_format' ) );
-		if ( '' == $post->post_title ) {
-				// The post has no title, so make the date a link to the post page
+	public static function get_byline() {
+		$term_text = '';
+
+		if ( '' !== get_the_title() ) {
+			$post_date = get_the_time( get_option( 'date_format' ) );
+		} else {
+			// The post has no title, so make the date a link to the post page.
 			$post_date = '<a href="' . esc_url( get_the_permalink() ) . '">'
-				   . esc_html( $post_date )
-				   . '</a>';
+				. esc_html( get_the_time( get_option( 'date_format' ) ) )
+				. '</a>';
 		}
-		?>
-			<em>
-				By:&nbsp;<?php echo esc_html( get_the_author() ); ?>&nbsp;on:&nbsp;<?php echo esc_html( $post_date ); ?>
-				<?php
-				if ( has_category() ) {
-					echo '&nbsp;in:&nbsp;';
-					the_category( ', ' );
-				}
-				if ( has_tag() ) {
-					echo ', ';
-					the_tags( '', ', ', '' );
-				}
-				?>
-			</em>
-		<?php
+
+		if ( has_category() ) {
+			$term_text .= '&nbsp;in:&nbsp;' . get_the_category_list( ', ' );
+		}
+		if ( has_tag() ) {
+			$term_text .= get_the_tag_list( ', ', '', ', ' );
+		}
+
+		return '<em>
+					By:&nbsp;' . esc_html( get_the_author() ) . '&nbsp;on:&nbsp;' . esc_html( $post_date ) . $term_text
+			. '</em>';
 	}
 
 	public static function comment_list( $comment, $arguments, $depth ) {
 		?>
-		<li <?php echo comment_class( 'media' ); ?> id="comment-<?php echo comment_ID() ?>">
+		<li <?php echo comment_class( 'media' ); ?> id="comment-<?php echo esc_attr( get_comment_ID() ); ?>">
 		<article>
 			<div class="meta-comment pull-left">
 				<?php echo get_avatar( $comment, 96 ); ?>

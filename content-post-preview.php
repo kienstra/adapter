@@ -13,7 +13,7 @@
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php the_title(); ?></a>
 	</h2>
 	<p>
-		<?php echo wp_kses_post( AWP_Theme::get_author_date_category_tag() ); ?>
+		<?php echo wp_kses_post( AWP_Theme::get_byline() ); ?>
 		<a href="<?php echo esc_url( get_the_permalink() ); ?>" class="mobile-post-permalink">
 			<span class="glyphicon glyphicon-chevron-right"></span>
 		</a>
