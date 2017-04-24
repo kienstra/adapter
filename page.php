@@ -9,9 +9,9 @@ get_header();
 ?>
 	<div class="row">
 		<div class="col-md-8">
-			<?php AWP_Theme::the_breadcrumbs(); ?>
+			<?php get_template_part( 'breadcrumbs' ); ?>
 			<?php get_template_part( 'query-page-content' ); ?>
-		</div> <!-- col-md-8 -->
+		</div>
 		<div class="col-md-4 main-sidebar">
 			<?php wp_meta(); ?>
 			<?php if ( is_active_sidebar( 'main_sidebar' ) ) : ?>

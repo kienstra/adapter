@@ -132,7 +132,7 @@ class AWP_Theme {
 	/**
 	 * Get the copyright text to output in the bottom navbar.
 	 *
-	 * @return string $copyrigh_text To display in the footer.
+	 * @return string $copyright_text To display in the footer.
 	 */
 	public static function get_copyright() {
 
@@ -302,62 +302,9 @@ class AWP_Theme {
 		return $markup . '</div>';
 	}
 
-	public static function display_comment_form_or_template() {
-		$do_use_comment_form = apply_filters( 'awp_use_unstyled_comment_form', false );
-		if ( $do_use_comment_form ) {
-			comment_form();
-		} else {
-			comments_template();
-		}
-	}
-
-	public static function the_breadcrumbs() {
-		global $post;
-		if ( ! isset( $post ) ) {
-			return;
-		}
-		if ( self::current_post_has_parent() ) {
-			self::echo_breadcrumbs();
-		}
-	}
-
-	public static function current_post_has_parent() {
-		$post_parent_id = wp_get_post_parent_id( get_the_ID() );
-		return ( ( false !== $post_parent_id ) && ( 0 !== $post_parent_id ) );
-	}
-
-	// @todo: refactor into content-breadcrumbs.php
-	public static function echo_breadcrumbs() {
-		?>
-			<ol class="breadcrumb">
-				<li><a href="<?php echo esc_url( get_home_url() ); ?>">Home</a></li>
-				<li><?php self::echo_post_parent_for_breadcrumb(); ?></li>
-				<li class="active"><?php the_title(); ?></li>
-			</ol>
-		<?php
-	}
-
-	public static function echo_post_parent_for_breadcrumb() {
-		global $post;
-		$post_parent = get_post( $post->post_parent );
-
-		if ( self::post_is_only_a_placeholder_and_has_no_content( $post_parent ) ) {
-			echo get_the_title( $post_parent );
-		} else {
-			self::echo_post_title_wrapped_in_a_link( $post_parent );
-		}
-	}
-
-	public static function post_is_only_a_placeholder_and_has_no_content( $post_parent ) {
+	public static function post_is_only_a_placeholder_and_has_no_content( $parent_id ) {
+		$post_parent = get_post( $parent_id );
 		return ( property_exists( $post_parent, 'post_content' ) && ( '' === $post_parent->post_content ) );
-	}
-
-	public static function echo_post_title_wrapped_in_a_link( $post_parent ) {
-		$parent_title = get_the_title( $post_parent );
-		$parent_link = get_permalink( $post_parent );
-		echo '<a href="' . esc_url( $parent_link ) . '" title="' . esc_attr( $parent_title ) . '">'
-			. esc_html( $parent_title )
-			. '</a>';
 	}
 
 	public static function maybe_echo_edit_link() {
