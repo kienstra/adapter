@@ -29,7 +29,7 @@ function awp_add_customizer_sections( $wp_customize ) {
 		$wp_customize ,
 		'banner_background_color' ,
 		array(
-			'label' => __( 'Backround Color' , 'adapter-wp' ),
+			'label' => __( 'Background Color' , 'adapter-wp' ),
 			'section' => 'top_banner_background_color',
 			'settings' => 'awp_banner_background_color',
 		)
