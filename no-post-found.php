@@ -10,7 +10,7 @@
 	<div class="container">
 		<h2>
 			<span class="glyphicon glyphicon-exclamation-sign"></span>
-			<?php esc_attr_e( "Sorry, we couldn't find your page." , 'adapter-wp' ); ?>
+			<?php esc_attr_e( 'Sorry, we could not find your page.', 'adapter-wp' ); ?>
 		</h2>
 		<h4>
 			<?php esc_attr_e( 'Try a search, or click a link below.' , 'adapter-wp' ); ?>
