@@ -1,16 +1,18 @@
 <?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
 
-<?php if ( comments_open() && have_comments() && ( ! post_password_required() ) ) : ?>
+<?php if ( comments_open() && ( ! post_password_required() ) ) : ?>
 	<h3 id="comments">
 		<span class="glyphicon glyphicon-comment"></span>&nbsp;
 		<?php comments_number( __( 'No comment' , 'adapter-wp' ) , __( 'A comment' , 'adapter-wp' ) , __( '% comments' , 'adapter-wp' ) ); ?>
 		<a class="add-comment btn btn-med btn-primary pull-right" href="#respond">
 			<span class="glyphicon glyphicon-plus"></span> &nbsp;
-			Comment
+			<?php esc_html_e( 'Comment', 'adapter-wp' ); ?>
 		</a>
 	</h3>
 	<ol class="comment-area media-list">
-		<?php wp_list_comments( 'callback=AWP_Theme::comment_list' ); ?>
+		<?php wp_list_comments( array(
+			'callback' => array( 'AWP_Theme', 'comment_list' ),
+		) ); ?>
 	</ol>
 	<ul class="pager">
 		<li>

@@ -216,43 +216,52 @@ class AWP_Theme {
 			$term_text .= get_the_tag_list( ', ', '', ', ' );
 		}
 
-		return '<em>
-					By:&nbsp;' . esc_html( get_the_author() ) . '&nbsp;on:&nbsp;' . esc_html( $post_date ) . $term_text
+		return '<em>'
+					. __( 'By', 'adapter-wp' ) . ':&nbsp;' . esc_html( get_the_author() ) . '&nbsp;' . __( 'on', 'adapter-wp' ) . ':&nbsp;' . esc_html( $post_date ) . $term_text
 			. '</em>';
 	}
 
+	/**
+	 * Echoes each comment in a <li>, with Bootstrap markup.
+	 *
+	 * Callback function of wp_list_comments().
+	 *
+	 * @param object $comment WordPress comment object, to output in this function.
+	 * @param array  $arguments To control this output, including echo and per_page.
+	 * @param int    $depth The hierarchical level of the comment.
+	 * @return void.
+	 */
 	public static function comment_list( $comment, $arguments, $depth ) {
 		?>
 		<li <?php echo comment_class( 'media' ); ?> id="comment-<?php echo esc_attr( get_comment_ID() ); ?>">
-		<article>
-			<div class="meta-comment pull-left">
-				<?php echo get_avatar( $comment, 96 ); ?>
-			</div>
-			<div class="content-comment media-body">
-				<p class="date-comment pull-right text-right text-muted">
-		<?php echo human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ); ?> ago &nbsp;
-		<a class="permalink-comment" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" title="Comment link">
-			<span class="glyphicon glyphicon-ink"></span>
-		</a>
-				</p>
-				<?php if ( '0' == $comment->comment_approved ) : ?>
-		<em>
-			<?php _e( 'The comment is in the queue for moderation', 'adapter-wp' ); ?>
-		</em>
-				<?php else : ?>
-		<p><?php echo comment_author_link(); ?></p>
-		<?php comment_text(); ?>
-		<div class="reply-comment pull-right">
-			<?php comment_reply_link( array_merge( $arguments, array(
-				 'reply_text' => '<span class="glyphicon glyphicon-edit"></span> &nbsp; Reply',
-				 'depth'		 => $depth,
-				 'max_depth' => $arguments['max_depth'],
-			) ) );
-			?>
-		</div>
-				<?php endif; ?>
-			</div> <!-- content-comment -->
-		</article>
+			<article>
+				<div class="meta-comment pull-left">
+					<?php echo wp_kses_post( get_avatar( $comment, 96 ) ); ?>
+				</div>
+				<div class="content-comment media-body">
+					<p class="date-comment pull-right text-right text-muted">
+						<?php echo esc_html( human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?> ago &nbsp;
+						<a class="permalink-comment" href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>" title="Comment link">
+							<span class="glyphicon glyphicon-ink"></span>
+						</a>
+					</p>
+					<?php if ( '0' === $comment->comment_approved ) : ?>
+						<em><?php esc_html_e( 'The comment is in the queue for moderation', 'adapter-wp' ); ?></em>
+					<?php else : ?>
+						<p><?php echo comment_author_link(); ?></p>
+						<?php comment_text(); ?>
+						<div class="reply-comment pull-right">
+							<?php comment_reply_link( array_merge( $arguments, array(
+								 'reply_text' => '<span class="glyphicon glyphicon-edit"></span> &nbsp; Reply',
+								 'depth'		 => $depth,
+								 'max_depth' => $arguments['max_depth'],
+							) ) );
+							?>
+						</div>
+					<?php endif; ?>
+				</div>
+			</article>
+		</li>
 	<?php
 	}
 
