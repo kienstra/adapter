@@ -1,7 +1,12 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' );
+<?php
+/**
+ * Theme index file.
+ *
+ * @package AdapterTheme
+ */
 
 get_header();
-	?>	
+	?>
 	<div class="row">
 		<div class="col-md-12">
 			<?php get_template_part( 'breadcrumbs' ); ?>

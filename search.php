@@ -1,7 +1,13 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display on searching for a string.
+ *
+ * @package AdapterTheme
+ */
 
-<?php get_header(); ?>
-	<?php $number_of_results = $wp_query->found_posts; ?>
+get_header();
+	$number_of_results = $wp_query->found_posts;
+	?>
 	<div class="jumbotron">
 		<div class="container">
 			<h3><?php esc_html_e( 'Search for:' , 'adapter-wp' ); ?>&nbsp;<span class="search-keyword">&ldquo;<?php the_search_query(); ?>&rdquo;</span></h3>

@@ -1,5 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display the footer.
+ *
+ * @package AdapterTheme
+ */
 
+?>
 	</div> <!-- .page-container -->
 		<footer>
 			<div id="footer">

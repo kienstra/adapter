@@ -177,7 +177,7 @@ class WP_Bootstrap_Navwalker extends Walker_Nav_Menu {
 				$fb_output = '<' . $args['container'];
 
 				if ( isset( $args['container_id'] ) ) {
-					$fb_output .= ' id="' . $args['container_id '] . '"';
+					$fb_output .= ' id="' . $args['container_id'] . '"';
 				}
 
 				if ( isset( $args['container_class'] ) ) {

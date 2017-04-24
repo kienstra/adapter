@@ -1,6 +1,13 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
-<?php get_header(); ?>
+<?php
+/**
+ * Display a single post.
+ *
+ * @package AdapterTheme
+ */
 
+get_header();
+
+?>
 <div class="row">
 	<div class="col-md-8"> 
 		<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

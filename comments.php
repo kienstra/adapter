@@ -1,6 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display comments when calling comments_template().
+ *
+ * @package AdapterTheme
+ */
 
-<?php if ( comments_open() && ( ! post_password_required() ) ) : ?>
+if ( comments_open() && ( ! post_password_required() ) ) : ?>
 	<h3 id="comments">
 		<span class="glyphicon glyphicon-comment"></span>&nbsp;
 		<?php comments_number( __( 'No comment' , 'adapter-wp' ) , __( 'A comment' , 'adapter-wp' ) , __( '% comments' , 'adapter-wp' ) ); ?>

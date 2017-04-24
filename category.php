@@ -1,3 +1,8 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' );
+<?php
+/**
+ * Display categories.
+ *
+ * @package AdapterTheme
+ */
 
 get_template_part( 'home' );

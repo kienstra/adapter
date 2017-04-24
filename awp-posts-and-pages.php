@@ -1,5 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display recent posts and pages.
+ *
+ * @package AdapterTheme
+ */
 
+?>
 <div class="row">
 	<div class="col-md-6 search-posts">
 		<h3>

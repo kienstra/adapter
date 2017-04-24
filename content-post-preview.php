@@ -1,5 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display the post preview content.
+ *
+ * @package AdapterTheme
+ */
 
+?>
 <article class="<?php esc_attr( implode( ' ', array_filter( get_post_class( 'post-preview' ) ) ) ); ?>">
 	<a href="<?php echo esc_url( get_the_permalink() ); ?>">
 		<?php

@@ -1,4 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Theme header file.
+ *
+ * @package AdapterTheme
+ */
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes( 'html' ); ?>>
 	<head>

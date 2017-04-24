@@ -1,4 +1,9 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' );
+<?php
+/**
+ * Display the home page.
+ *
+ * @package AdapterTheme
+ */
 
 get_header();
 ?>

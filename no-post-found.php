@@ -1,5 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display if no posts are found.
+ *
+ * @package AdapterTheme
+ */
 
+?>
 <div class="jumbotron">
 	<div class="container">
 		<h2>

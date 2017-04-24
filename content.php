@@ -1,5 +1,11 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' ); ?>
+<?php
+/**
+ * Display the post content.
+ *
+ * @package AdapterTheme
+ */
 
+?>
 <article id="post-<?php echo esc_attr( get_the_ID() ); ?>" class="<?php echo esc_attr( implode( ' ', array_filter( get_post_class( 'post' ) ) ) ); ?>">
 	<h1>
 		<?php esc_html( get_the_title() ); ?>

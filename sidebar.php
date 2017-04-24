@@ -1,4 +1,10 @@
 <?php
+/**
+ * Form for searching the site.
+ *
+ * @package AdapterTheme
+ */
 
-if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar() ) :
-endif;
+if ( is_active_sidebar( 'main_sidebar' ) ) {
+	dynamic_sidebar( 'main_sidebar' );
+}
