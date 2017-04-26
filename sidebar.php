@@ -1,6 +1,6 @@
 <?php
 /**
- * Form for searching the site.
+ * Main sidebar.
  *
  * @package AdapterTheme
  */
