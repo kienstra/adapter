@@ -15,9 +15,7 @@ get_header();
 	</div>
 	<div class="col-md-4 main-sidebar">
 		<?php wp_meta(); ?>
-		<?php if ( is_active_sidebar( 'main_sidebar' ) ) : ?>
-			<?php dynamic_sidebar( 'main_sidebar' ); ?>
-		<?php endif; ?>
+		<?php get_sidebar(); ?>
 	</div>
 </div>
 <?php get_footer();
