@@ -104,11 +104,6 @@ class AWP_Theme {
 		}
 	}
 
-	public static function top_banner_backround_alignment() {
-		$alignment = apply_filters( 'awp_top_banner_backround_alignment', 'center' );
-		echo esc_attr( $alignment );
-	}
-
 	public static function maybe_bottom_nav() {
 		$do_get_bottom_nav = apply_filters( 'awp_do_get_bottom_nav', self::should_page_have_top_and_bottom_navs() );
 		if ( $do_get_bottom_nav ) {
@@ -175,7 +170,7 @@ class AWP_Theme {
 				$has_href = ( false !== strpos( $page, 'href' ) );
 				$class = $has_href ? 'active' : 'disabled';
 				echo '<li class="' . esc_attr( $class ) . '">'
-					. $page
+					. wp_kses_post( $page )
 					. '</li>';
 			}
 		}
