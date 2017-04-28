@@ -35,15 +35,10 @@ function awp_add_customizer_sections( $wp_customize ) {
 		)
 	) );
 
-} /* end function awp_add_customizer_sections */
+}
 
 function awp_sanitize_customizer_value( $input ) {
 	if ( current_user_can( 'edit_theme_options' ) ) {
 		return esc_attr( $input );
 	}
-}
-
-add_action( 'customize_register' , 'awp_enqueue_customizer_script' );
-function awp_enqueue_customizer_script() {
-	wp_enqueue_script( 'awp-customize' , get_template_directory_uri() . '/js/awp-customize.js' , array( 'jquery', 'customize-preview' ) , '' , true );
 }
