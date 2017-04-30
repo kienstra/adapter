@@ -1,3 +1,8 @@
-<?php defined( 'ABSPATH' ) or die( 'No direct access!' );
+<?php
+/**
+ * Archive page
+ *
+ * @package AdapterTheme
+ */
 
 get_template_part( 'home' );
