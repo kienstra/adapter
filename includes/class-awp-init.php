@@ -46,9 +46,6 @@ class AWP_Init {
 		add_filter( 'widget_archives_args', array( $this, 'limit_archives_count' ), 10, 1 );
 		add_filter( 'widget_categories_args', array( $this, 'widget_categories_filter' ), 10, 1 );
 		add_filter( 'the_content', array( $this, 'add_clearfix_to_end_of_content' ), 1, 1 );
-		remove_action( 'wp_head', 'rsd_link' );
-		remove_action( 'wp_head', 'wp_generator' );
-		remove_action( 'wp_head', 'wlwmanifest_link' );
 	}
 
 	public function theme_text_domain() {

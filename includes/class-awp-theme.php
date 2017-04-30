@@ -247,8 +247,8 @@ class AWP_Theme {
 						<?php comment_text(); ?>
 						<div class="reply-comment pull-right">
 							<?php comment_reply_link( array_merge( $arguments, array(
-								 'reply_text' => '<span class="glyphicon glyphicon-edit"></span> &nbsp; Reply',
-								 'depth'		 => $depth,
+								 'reply_text' => '<span class="glyphicon glyphicon-edit"></span> &nbsp;' . __( 'Reply', 'adapter-wp' ),
+								 'depth' => $depth,
 								 'max_depth' => $arguments['max_depth'],
 							) ) );
 							?>
@@ -261,7 +261,7 @@ class AWP_Theme {
 	}
 
 	/**
-	 * Get the pages in a format that uses Bootstrap's styling for list-group.
+	 * Get the pages in a format that uses Bootstrap's styling for .list-group.
 	 *
 	 * @return string $markup Bootstrap .list-group markup for pages.
 	 */
