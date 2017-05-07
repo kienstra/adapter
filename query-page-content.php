@@ -10,8 +10,8 @@ if ( have_posts() ) {
 		the_post();
 		get_template_part( 'content', 'page' );
 	}
+	wp_reset_postdata();
 } else {
 	get_template_part( 'no-post-found' );
 	get_template_part( 'awp-posts-and-pages' );
 }
-wp_reset_postdata();
