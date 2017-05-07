@@ -11,7 +11,7 @@
 		<?php the_title( '<header class="entry-header"><h1 class="entry-title">', AWP_Theme::maybe_echo_edit_link() . '</h1></header>' ); ?>
 	</h1>
 	<div class="entry-content">
-		<?php the_content();
+		<?php echo wp_kses_post( get_the_content() );
 		AWP_Theme::custom_wp_link_pages();
 		comments_template();
 		?>

@@ -21,5 +21,5 @@
 			<?php endif; ?>
 		</em>
 	</p>
-	<?php the_content(); ?>
+	<?php echo wp_kses_post( get_the_content() ); ?>
 </article>
