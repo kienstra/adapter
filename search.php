@@ -57,7 +57,10 @@ get_header();
 					get_template_part( 'awp-posts-and-pages' );
 				endif; ?>
 			</div>
-				<?php get_sidebar(); ?>
+				<div class="col-md-4 main-sidebar">
+					<?php wp_meta(); ?>
+					<?php get_sidebar(); ?>
+				</div>
 		</div>
 	</div>
 <?php get_footer();
