@@ -7,7 +7,7 @@
 
 get_header();
 	global $wp_query;
-	$number_of_results = $wp_query->found_posts;
+	$number_of_results = property_exists( $wp_query, 'found_posts' ) ? $wp_query->found_posts : 0;
 	?>
 	<div class="jumbotron">
 		<div class="container">
@@ -39,9 +39,11 @@ get_header();
 			<div class="col-md-8">
 				<?php if ( have_posts() ) : ?>
 					<h1><?php esc_html_e( 'Search Results' , 'adapter-wp' ); ?></h1>
-					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content' , 'post-preview' ); ?>
-					<?php endwhile; ?>
+					<?php while ( have_posts() ) :
+						the_post();
+						get_template_part( 'content' , 'post-preview' );
+					endwhile;
+					?>
 					<ul class="pager">
 						<li>
 							<?php previous_posts_link( '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;' . __( 'Previous results' , 'adapter-wp' ) ); ?>

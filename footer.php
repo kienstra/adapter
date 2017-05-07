@@ -9,7 +9,7 @@
 	</div> <!-- .page-container -->
 		<footer>
 			<div id="footer">
-			<?php AWP_Theme::maybe_bottom_nav(); ?>
+				<?php AWP_Theme::maybe_bottom_nav(); ?>
 			</div>
 		</footer>
 		<?php wp_footer(); ?>
