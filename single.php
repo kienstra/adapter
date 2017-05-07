@@ -17,7 +17,7 @@ get_header();
 				?>
 				<hr>
 				<?php do_action( 'awp_after_full_single_post_content' ); ?>
-				<?php comment_form(); ?>
+				<?php comments_template(); ?>
 				<ul class="pager">
 					<?php next_post_link( '<li>%link</li>' , '<span class="glyphicon glyphicon-chevron-left"></span>&nbsp;%title' ); ?>
 					<?php previous_post_link( '<li>%link</li>' , '%title&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
