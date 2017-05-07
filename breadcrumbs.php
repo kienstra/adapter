@@ -6,7 +6,7 @@
  */
 
 $parent_id = wp_get_post_parent_id( get_the_ID() );
-if ( false !== $parent_id ) :
+if ( 0 !== $parent_id ) :
 ?>
 	<ol class="breadcrumb">
 		<li><a href="<?php echo esc_url( get_home_url() ); ?>">Home</a></li>
