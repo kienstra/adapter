@@ -27,67 +27,8 @@ if ( comments_open() && ( ! post_password_required() ) ) : ?>
 			<?php next_comments_link( __( 'Next comments' , 'adapter-wp' ) . '&nbsp;<span class="glyphicon glyphicon-chevron-right"></span>' ); ?>
 		</li>
 	</ul>
-<?php endif; ?>
-<?php if ( comments_open() ) : ?>
-	<div id="respond">
-		<h4>
-			<?php comment_form_title( __( 'Leave a comment' , 'adapter-wp' ) , __( 'Leave a comment for %' , 'adapter-wp' ) ); ?>
-		</h4>
-		<div class="cancel-reply-comment">
-			<?php cancel_comment_reply_link(); ?>
-		</div>
-		<?php if ( ( ! is_user_logged_in() ) && ( get_option( 'comment_registration' ) ) ) :
-			?>
-			<p>
-				<?php esc_html_e( 'Please' , 'adapter-wp' ); ?>&nbsp;<a href="<?php echo esc_url( wp_login_url( get_permalink() ) ); ?>"><?php esc_html_e( 'log in' , 'adapter-wp' ); ?></a>&nbsp;<?php esc_html_e( 'to make a comment.' , 'adapter-wp' ); ?>
-			</p>
-		<?php else : ?>
-			<form class="form-horizontal" role="form" action="<?php echo esc_url( site_url( 'wp-comments-post.php' ) ); ?>" method="post" id="comment-form">
-			<?php if ( is_user_logged_in() ) : ?>
-				<p>
-					<?php esc_html_e( 'Welcome,' , 'adapter-wp' );?>&nbsp;<a href="<?php echo esc_url( site_url( 'wp-admin/profile.php' ) ); ?>"><?php echo esc_html( $user_identity ); ?></a>.
-					<a href="<?php echo esc_url( wp_logout_url( get_permalink() ) ); ?>" title="<?php esc_attr_e( 'Log out' , 'adapter-wp' ); ?>"><?php esc_html_e( 'Log out' , 'adapter-wp' ); ?></a>
-				</p>
-			<?php else : ?>
-				<div class="form-group">
-					<label for="author" class="sr-only">
-						<?php esc_html_e( 'Name' , 'adapter-wp' ); ?>
-					</label>
-					<div class="col-md-5">
-						<input type="text" id="author" class="form-control" name="author" value="<?php echo esc_attr( $comment_author ); ?>" tabindex="1" placeholder="<?php esc_attr_e( 'Name' , 'adapter-wp' ); ?>"<?php echo ( $req ) ? ' aria-required="true"' : null; ?>/>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="email" class="sr-only">
-						<?php esc_html_e( 'Email' , 'adapter-wp' ); ?>
-					</label>
-					<div class="col-md-5">
-						<input type="text" id="email" name="email" class="form-control" value="<?php echo esc_attr( $comment_author_email ); ?>" tabindex="2" placeholder="<?php esc_attr_e( 'Email (will not be published)' , 'adapter-wp' ); ?>" <?php if ( $req ) { echo "aria-required='true'";} ?> />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="url" class="sr-only">
-						<?php esc_html_e( 'Url' , 'adapter-wp' ); ?>
-					</label>
-					<div class="col-md-5">
-						<input type="text" id="url" name="url" class="form-control" value="<?php echo esc_attr( $comment_author_url ); ?>" tabindex="3" placeholder="<?php esc_attr_e( 'Url' , 'adapter-wp' ); ?>" />
-					</div>
-				</div>
-			<?php endif; ?>
-			<div class="form-group">
-				<label class="sr-only" for="comment"><?php esc_html_e( 'Comment' , 'adapter-wp' ); ?></label>
-				<div class="col-md-10">
-					<textarea class="input-lg form-control" id="comment" name="comment" tabindex="4" placeholder="<?php esc_html_e( 'Comment' , 'adapter-wp' ); ?>"></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-10">
-					<input type="submit" class="btn btn-primary btn-sm" tabindex="5" value="Post comment"/>
-					<?php comment_id_fields(); ?>
-				</div>
-			</div>
-		</form>
-		<?php endif; ?>
-	</div>
-	<?php do_action( 'comment_form', get_the_ID() ); ?>
 <?php endif;
+comment_form( array(
+	'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label> <textarea id="comment" class="form-control input-lg" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p>',
+	'class_submit' => 'btn btn-primary btn-sm',
+) );
