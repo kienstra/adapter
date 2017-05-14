@@ -25,18 +25,16 @@
 		<?php do_action( 'awp_end_of_first_top_navbar' ); ?>
 	</div>
 </nav>
-<?php $awp_tagline = trim( get_bloginfo( 'description' ) );
-$awp_header_extra_markup = do_shortcode( get_theme_mod( 'awp_header_extra_markup' ) );
-if ( ( '' !== $awp_tagline ) || ( '' !== $awp_header_extra_markup ) ) :
+<?php
+if ( '' !== trim( get_bloginfo( 'description' ) ) ) :
 ?>
 	<nav class="<?php echo esc_attr( AWP_Theme::get_classes_of_second_top_navbar() ); ?> navbar-opt-in">
 		<div class="container">
 			<div class="navbar-header">
 				<span class="navbar-brand">
-					<?php echo esc_html( $awp_tagline ); ?>
+					<?php echo esc_html( get_bloginfo( 'description' ) ); ?>
 				</span>
 			</div>
-			<?php echo wp_kses_post( $awp_header_extra_markup ); ?>
 			<?php do_action( 'awp_end_of_top_banner' ); ?>
 		</div>
 	</nav>
