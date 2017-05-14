@@ -116,7 +116,7 @@ class AWP_Init {
 		wp_register_script( $this->theme_version . '-html5-shiv', get_template_directory() . '/js/html5shiv.js', array(), $this->theme_version, false );
 		$wp_scripts->add_data( $this->theme_version . '-html5-shiv', 'conditional', 'lt IE 9' );
 
-		wp_register_script( $this->theme_version . '-respond-js', get_template_directory() . '/js/respond.min.js', array(), $this->theme_version, false );
+		wp_register_script( $this->theme_version . '-respond-js', get_template_directory() . '/js/respond.src.js', array(), $this->theme_version, false );
 		$wp_scripts->add_data( $this->theme_version . '-respond-js', 'conditional', 'lt IE 9' );
 
 		wp_enqueue_script( 'jquery' );
