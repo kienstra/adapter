@@ -8,7 +8,7 @@ Description: Adapts to any screen size. Made for developers, with filters and ho
 Version: 1.0.6
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: right-sidebar , responsive-layout , two-columns , full-width-template , translation-ready , theme-options , featured-image-header
+Tags: right-sidebar, responsive-layout, two-columns, full-width-template, translation-ready, theme-options, featured-image-header
 Text Domain : adapter-wp
 
 */
@@ -27,7 +27,7 @@ html body #wpadminbar {
 	z-index: 5000 !important ;
 }
 
-/* if wp admin bar, lower navbar */
+/* If the wp-admin bar is showing, lower the navbar */
 .admin-bar .navbar-fixed-top {
 	margin-top : 30px;
 }
@@ -36,9 +36,10 @@ html body #wpadminbar {
 	margin-bottom : 0;
 }
 
-/* on hovering on a menu item, show all its children
-   but not when it is in mobile mode
-*/
+/*
+ * On hovering on a menu item, show all its children.
+ * But not when it is in mobile mode.
+ */
 .navbar-collapse:not(.in) .dropdown:hover .dropdown-menu {
 	display : block;
 }
@@ -64,7 +65,7 @@ html body #wpadminbar {
 }
 
 /* Post styles */
-.post h1 ,
+.post h1,
 .post p {
 	-ms-word-wrap : break-word;
 	word-wrap : break-word;
@@ -74,7 +75,7 @@ article.post-preview {
 	position : relative;
 }
 
-article.post.post-preview .home-featured-image.wp-post-image ,
+article.post.post-preview .home-featured-image.wp-post-image,
 img.search-thumbnail {
 	max-height : 200px;
 	max-width  : 300px;
@@ -95,18 +96,18 @@ article.post-preview .read-more-button {
 	font-size : .5em;
 }
 
-.post ,
-.size-auto ,
-.size-full ,
-.size-large ,
-.size-medium ,
+.post,
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
 .size-thumbnail {
 	max-width : 100%;
 	height : auto;
 }
 
-.post .aligncenter ,
-.post .alignleft ,
+.post .aligncenter,
+.post .alignleft,
 .post .alignright {
 	display : block;
 }
@@ -140,7 +141,7 @@ article.post-preview .read-more-button {
 	padding : 10px 10px 15px 10px;
 }
 
-.children .comment ,
+.children .comment,
 .comment:not(:first-child) {
 	border-top : 1px;
 	border-top-color : #DCD3D3;
@@ -175,7 +176,7 @@ article.post-preview .read-more-button {
 	margin-right : .5em;
 }
 
-.wp-caption ,
+.wp-caption,
 .post img {
 	max-width : 100%;
 	height : auto;
@@ -187,7 +188,7 @@ article.post-preview .read-more-button {
 	max-width : 100%;
 }
 
-.wp-caption img ,
+.wp-caption img,
 .gallery-icon {
 	padding-bottom : 1rem;
 }
@@ -214,7 +215,7 @@ article.post-preview .read-more-button {
 	text-decoration : none;
 }
 
-.widget-search ,
+.widget-search,
 #search-form {
 	max-width : 500px;
 }
@@ -291,6 +292,6 @@ p.copyright-text {
 
 @media ( max-width : 350px ) {
 	.add-comment {
-	display : none;
+		display : none;
 	}
 }
